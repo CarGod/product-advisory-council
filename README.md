@@ -8,7 +8,7 @@
 
 这里的顾问是 AI 运用整理后方法形成的分析视角，不是本人，不代表本人认可，也不保证真人顾问等效或商业结果。
 
-[下载 v2.2.1 安装包](https://github.com/CarGod/product-advisory-council/releases/tag/v2.2.1) · [技能入口](product-advisory-council/SKILL.md) · [群聊与导出说明](product-advisory-council/references/group-chat.md)
+[下载 v2.2.2 安装包](https://github.com/CarGod/product-advisory-council/releases/tag/v2.2.2) · [技能入口](product-advisory-council/SKILL.md) · [群聊与导出说明](product-advisory-council/references/group-chat.md)
 
 ## 可以帮你讨论什么
 
@@ -16,6 +16,8 @@
 - 功能优先级、定价、增长与商业模式的取舍。
 - 发现同类产品后，怎样判断是否仍有机会。
 - 资源有限时，如何缩小实验、检验假设和设置停止条件。
+
+默认每次交付文字总结和聊天HTML，单人或简短评审也包含网页；用户明确不要网页或环境无法生成时说明例外。
 
 讨论从同一份业务简报出发，区分事实、假设与未知。最后给出建议、替代方案、关键分歧、最强反例及下一步实验，不按名人票数决定，也不强求所有视角达成一致。
 
@@ -42,7 +44,7 @@
 
 ## 安装一次即可
 
-1. 在 [Releases](https://github.com/CarGod/product-advisory-council/releases) 下载 `product-advisors-public-v2.2.1.zip`。
+1. 在 [Releases](https://github.com/CarGod/product-advisory-council/releases) 下载 `product-advisors-public-v2.2.2.zip`。
 2. 解压后保留完整的 `product-advisory-council/` 文件夹；不要只复制 `SKILL.md`，也不需要分别安装每个人。
 3. 将该文件夹放入你的 AI 客户端支持的技能目录，或通过客户端技能安装入口导入完整技能包。客户端的具体支持与安装入口以其自身说明为准。
 
@@ -100,7 +102,7 @@
 
 ## 群聊网页、图片与PDF导出
 
-网页包含头像、发言气泡、方法卡及决议卡。方法链接显示“编号 + 标题”，点击可在右侧查看详情。支持将当前聊天导出为PDF；PDF保留聊天视觉样式，文字以图片呈现，不是可搜索的文本PDF。右上角的「导出长图」支持：
+网页包含头像、发言气泡、方法卡及决议卡。Markdown表格在桌面按表格显示，在手机与图片导出中按属性卡显示；支持安全链接与资料编号列表。方法链接显示“编号 + 标题”，点击可在右侧查看详情。支持将当前聊天导出为PDF；PDF保留聊天视觉样式，文字以图片呈现，不是可搜索的文本PDF。右上角的「导出长图」支持：
 
 - 单张长图，保留聊天布局。
 - 单气泡一张：每条完整消息独立导出，图片采用自然高度。
@@ -109,7 +111,7 @@
 - 按消息空隙分页；过长发言按段落或文字行拆分，尽量保留可读性。
 - 预览后逐张下载，或打包下载。
 
-聊天界面不调用模型，由宿主 AI 代理写入发言；本地服务仅监听本机，页面不加载外部资源。图片生成在浏览器本地完成，不会自动发布到社交平台。宿主 AI 客户端如何处理对话数据，仍取决于其自身服务和配置。
+聊天界面不调用模型，由宿主 AI 代理写入发言。页面会区分“消息已保存”与“等待代理读取/回复”，不会自动唤醒代理；需要时回主对话要求读取群里的新消息。本地服务仅监听本机，页面不加载外部资源。图片生成在浏览器本地完成，不会自动发布到社交平台。宿主 AI 客户端如何处理对话数据，仍取决于其自身服务和配置。
 
 分享前请检查聊天正文中的业务与个人信息。图片导出不会自动删除这些内容。特别长的讨论建议使用分图；已有旧网页需从聊天记录重新渲染才能获得新功能。
 
@@ -141,4 +143,4 @@ python3 scripts/search.py '用户价值 定价' --person yu-jun --limit 6
 python3 scripts/chatroom.py --help
 ```
 
-本次发布为 **v2.2.1 产品与AI顾问扩展版**。功能验证覆盖方法检索、人物筛选、聊天记录与渲染、讨论档位、图片分页及私有卡片快照隔离；这些检查不代表决策准确率或经营效果评测。详见[功能与效果边界](product-advisory-council/references/evaluation-status.md)。
+本次发布为 **v2.2.2 产品与AI顾问扩展版**。功能验证覆盖方法检索、人物筛选、聊天记录与渲染、讨论档位、图片分页及私有卡片快照隔离；这些检查不代表决策准确率或经营效果评测。详见[功能与效果边界](product-advisory-council/references/evaluation-status.md)。

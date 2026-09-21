@@ -234,6 +234,42 @@ button.inline-id:hover{background:color-mix(in srgb,var(--ink) 14%,transparent)}
 .export-stage .barbtn,.export-stage .stack,.export-stage .notice button,.export-stage .replybtn,.export-stage .typing{display:none!important}
 .export-stage .basis::before{content:none}
 @media(max-width:640px){.bar{gap:8px}.bar .group{width:34px;height:34px}.barbtn{padding:5px 8px;font-size:12px}}
+
+/* One semantic table; compact layouts turn each data row into a labelled card.
+   Labels are real DOM nodes so offline image export includes them too. */
+.rich-table{width:100%;max-width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0;margin:12px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px;color:inherit}
+.rich-table th,.rich-table td{padding:9px 10px;vertical-align:top;overflow-wrap:anywhere;word-break:normal;border-bottom:1px solid var(--line)}
+.rich-table th{font-weight:650;background:var(--surface-2)}
+.rich-table th+th,.rich-table td+td{border-left:1px solid var(--line)}
+.rich-table tbody tr:last-child td{border-bottom:0}
+.table-cell-label{display:none}.table-cell-value{display:block;min-width:0}
+.rich-table code{white-space:normal;overflow-wrap:anywhere}
+.rich-table+p{margin-top:.55em!important}
+.msg.user .rich-table th{background:rgba(0,0,0,.12)}
+.export-stage .rich-table,.export-stage .rich-table tbody{display:block;width:100%;border:0;overflow:visible}
+.export-stage .rich-table thead{display:none}
+.export-stage .rich-table.table-empty thead,.export-stage .rich-table.table-empty th{display:block}
+.export-stage .rich-table tr{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:10px 0;background:var(--surface)}
+.export-stage .rich-table td{display:grid;grid-template-columns:minmax(80px,30%) minmax(0,1fr);gap:10px;border-left:0!important;text-align:left!important}
+.export-stage .rich-table .table-cell-label{display:block;color:var(--ink-2);font-size:12px;font-weight:600}
+.export-stage .msg.user .rich-table tr{background:rgba(0,0,0,.08)}
+@media(max-width:640px){
+  .rich-table,.rich-table tbody{display:block;width:100%;border:0;overflow:visible}
+  .rich-table thead{display:none}
+  .rich-table.table-empty thead,.rich-table.table-empty th{display:block}
+  .rich-table tr{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:10px 0;background:var(--surface)}
+  .rich-table td{display:grid;grid-template-columns:minmax(70px,30%) minmax(0,1fr);gap:10px;border-left:0!important;text-align:left!important}
+  .rich-table .table-cell-label{display:block;color:var(--ink-2);font-size:12px;font-weight:600}
+  .msg.user .rich-table tr{background:rgba(0,0,0,.08)}
+}
+
+.rich-link{color:var(--focus);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;word-break:normal}
+.rich-link:hover{text-decoration-thickness:2px}
+.msg.user .rich-link{color:inherit}
+.rich-list{margin:10px 0;padding-left:1.65em;overflow-wrap:anywhere}
+.rich-list li+li{margin-top:8px}
+.rich-list li::marker{color:var(--ink-3);font-variant-numeric:tabular-nums}
+.card .inner{overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -308,19 +344,33 @@ function day(at) {
 function snippet(text, n) { const t = text.replace(/\s+/g, " "); return t.length > n ? t.slice(0, n) + "…" : t; }
 
 // Build text nodes, never rewrite serialized HTML: titles and user text stay inert.
-function appendInline(parent, text, formatted = true) {
-  const token = new RegExp((formatted ? "(\\*\\*[^*\\n]+\\*\\*|`[^`\\n]+`)|" : "((?!))|") + "(" + ID_RE.source + ")|(" + MENTION_RE.source + ")", "g");
+function appendInline(parent, text, formatted = true, links = true, interactive = true) {
+  const token = new RegExp((formatted ? "(\\*\\*[^*\\n]+\\*\\*)|" : "((?!))|") + "(" + ID_RE.source + ")|(" + MENTION_RE.source + ")", "g");
   let at = 0, match;
-  while ((match = token.exec(text))) {
+  while (at < text.length) {
+    token.lastIndex=at;match=token.exec(text);
+    const link=links ? nextMarkdownLink(text,at) : null;
+    const code=(formatted || links) ? nextInlineCode(text,at) : null;
+    if(code && (!match || code.start<match.index) && (!link || code.start<link.start)) {
+      if(code.start>at)parent.appendChild(document.createTextNode(text.slice(at,code.start)));
+      const node=el('code');appendInline(node,code.content,false,false,interactive);parent.appendChild(node);at=code.end;continue;
+    }
+    if(link && (!match || link.start<match.index)) {
+      if(link.start>at)parent.appendChild(document.createTextNode(text.slice(at,link.start)));
+      const anchor=el('a','rich-link');anchor.href=link.url;anchor.target='_blank';anchor.rel='noopener noreferrer';anchor.title=link.url;
+      // Link labels can be bold/code, but never contain nested links or buttons.
+      appendInline(anchor,link.label,true,false,false);parent.appendChild(anchor);at=link.end;continue;
+    }
+    if(!match)break;
     if (match.index > at) parent.appendChild(document.createTextNode(text.slice(at, match.index)));
     let end = match.index + match[0].length;
     if (match[1]) {
       const bold = match[1].startsWith("**"), node = el(bold ? "strong" : "code");
-      appendInline(node, match[1].slice(bold ? 2 : 1, bold ? -2 : -1), false);
+      appendInline(node, match[1].slice(bold ? 2 : 1, bold ? -2 : -1), false, bold && links, interactive);
       parent.appendChild(node);
     } else if (match[2]) {
       const id = match[2], card = cards[id];
-      if (card) {
+      if (card && interactive) {
         const title = typeof card.title === "string" ? card.title.trim() : "";
         const button = el("button", "inline-id", id + (title ? " " + title : ""));
         button.type = "button";
@@ -342,10 +392,120 @@ function appendInline(parent, text, formatted = true) {
   }
   if (at < text.length) parent.appendChild(document.createTextNode(text.slice(at)));
 }
+function nextInlineCode(text, from) {
+  for(let start=text.indexOf('`',from);start!==-1;start=text.indexOf('`',start+1)) {
+    let slashes=0;for(let n=start-1;n>=0&&text[n]==='\\';n--)slashes++;
+    if(slashes%2)continue;
+    let runEnd=start;while(text[runEnd]==='`')runEnd++;
+    const marker=text.slice(start,runEnd);let close=text.indexOf(marker,runEnd);
+    while(close!==-1 && (text[close-1]==='`'||text[close+marker.length]==='`'))close=text.indexOf(marker,close+marker.length);
+    if(close!==-1 && !text.slice(runEnd,close).includes('\n'))return {start,end:close+marker.length,content:text.slice(runEnd,close)};
+    start=runEnd-1;
+  }
+  return null;
+}
+// Parse a bounded inline link without interpreting HTML or accepting executable schemes.
+function nextMarkdownLink(text, from) {
+  for(let start=text.indexOf('[',from);start!==-1;start=text.indexOf('[',start+1)) {
+    let slashes=0;for(let n=start-1;n>=0&&text[n]==='\\';n--)slashes++;
+    if(slashes%2 || text[start-1]==='!')continue;
+    let depth=1, close=start+1;
+    for(;close<text.length;close++) {
+      if(text[close]==='\\'){close++;continue;}
+      if(text[close]==='\n')break;
+      if(text[close]==='[')depth++;
+      if(text[close]===']'&&!--depth)break;
+    }
+    if(depth || text[close+1]!=='(')continue;
+    let end=close+2, nesting=1;
+    for(;end<text.length;end++) {
+      if(text[end]==='\\'){end++;continue;}
+      if(text[end]==='\n')break;
+      if(text[end]==='(')nesting++;
+      if(text[end]===')'&&!--nesting)break;
+    }
+    if(nesting)continue;
+    let destination=text.slice(close+2,end);
+    if(destination.startsWith('<')&&destination.endsWith('>'))destination=destination.slice(1,-1);
+    destination=destination.replace(/\\([()])/g,'$1');
+    if(!/^https?:\/\//i.test(destination) || /[\u0000-\u0020\u007f\\]/.test(destination))continue;
+    let url;try{url=new URL(destination);}catch(_){continue;}
+    if(!['http:','https:'].includes(url.protocol)||!url.hostname)continue;
+    const label=text.slice(start+1,close).replace(/\\([\[\]\\])/g,'$1');
+    return {start,end:end+1,label:label||url.href,url:url.href};
+  }
+  return null;
+}
+// Split only unescaped pipes outside matched inline-code spans. Input stays text.
+function tableCells(line) {
+  const cells = []; let cell = "", separators = 0;
+  for (let i=0;i<line.length;i++) {
+    const ch=line[i];
+    if(ch==='\\' && i+1<line.length) {
+      const next=line[i+1];
+      if(next==='|') { cell+='|';i++;continue; }
+      if(next==='\\') { cell+='\\\\';i++;continue; }
+      cell+=ch+next;i++;continue;
+    }
+    if(ch==='`') {
+      let stop=i;while(line[stop]==='`')stop++;
+      const marker=line.slice(i,stop);let closing=line.indexOf(marker,stop);
+      while(closing!==-1 && (line[closing-1]==='`' || line[closing+marker.length]==='`')) closing=line.indexOf(marker,closing+marker.length);
+      if(closing!==-1) { cell+=line.slice(i,closing+marker.length);i=closing+marker.length-1;continue; }
+      cell+=marker;i=stop-1;continue;
+    }
+    if(ch==='|') { cells.push(cell.trim());cell="";separators++; }
+    else cell+=ch;
+  }
+  cells.push(cell.trim());
+  if(separators && cells[0]==='')cells.shift();
+  if(separators && cells[cells.length-1]==='')cells.pop();
+  return {cells,separators};
+}
+function tableAt(lines, start) {
+  if(start+1>=lines.length)return null;
+  const head=tableCells(lines[start]), rule=tableCells(lines[start+1]);
+  if(!head.separators || !rule.separators || !head.cells.length || head.cells.length!==rule.cells.length || !rule.cells.every(c=>/^:?-{3,}:?$/.test(c)))return null;
+  const rows=[];let end=start+2;
+  while(end<lines.length && lines[end].trim()) {
+    const row=tableCells(lines[end]);
+    // Do not silently discard extra cells or absorb a following prose paragraph.
+    if(!row.separators || row.cells.length>head.cells.length)break;
+    rows.push([...row.cells,...Array(head.cells.length-row.cells.length).fill('')]);end++;
+  }
+  return {headers:head.cells, align:rule.cells.map(c=>c.startsWith(':')&&c.endsWith(':')?'center':c.endsWith(':')?'right':'left'),rows,end};
+}
+function renderTable(data) {
+  const table=el('table','rich-table'+(data.rows.length?'':' table-empty')), head=el('thead'), heading=el('tr'), body=el('tbody');
+  data.headers.forEach((text,i)=>{const cell=el('th');cell.scope='col';cell.style.textAlign=data.align[i];appendInline(cell,text);heading.appendChild(cell);});
+  head.appendChild(heading);table.appendChild(head);
+  for(const row of data.rows) {
+    const tr=el('tr');
+    row.forEach((text,i)=>{
+      const cell=el('td');cell.style.textAlign=data.align[i];
+      const label=el('span','table-cell-label');label.setAttribute('aria-hidden','true');appendInline(label,data.headers[i] || `第 ${i+1} 列`);
+      const value=el('span','table-cell-value');appendInline(value,text);
+      cell.append(label,value);tr.appendChild(cell);
+    });body.appendChild(tr);
+  }
+  table.appendChild(body);return table;
+}
 function rich(text, speaker) {
-  const frag = document.createDocumentFragment();
-  for (const para of text.split(/\n+/)) {
-    const p = el("p"); appendInline(p, para); frag.appendChild(p);
+  const frag=document.createDocumentFragment(), lines=text.split(/\r?\n/);let fence=null;
+  for(let i=0;i<lines.length;) {
+    const fenceLine=/^\s*(`{3,}|~{3,})/.exec(lines[i]);
+    if(fenceLine){if(!fence)fence=fenceLine[1];else if(fenceLine[1][0]===fence[0] && fenceLine[1].length>=fence.length)fence=null;}
+    const table=!fence && !fenceLine ? tableAt(lines,i) : null;
+    if(table){frag.appendChild(renderTable(table));i=table.end;continue;}
+    if(!fence && !fenceLine && /^\s{0,3}\d+[.)、]\s+.+$/.test(lines[i])) {
+      const list=el('ol','rich-list');
+      while(i<lines.length) {
+        const item=/^\s{0,3}(\d+)[.)、]\s+(.+)$/.exec(lines[i]);if(!item)break;
+        const li=el('li');li.setAttribute('value',item[1]);appendInline(li,item[2]);list.appendChild(li);i++;
+      }
+      frag.appendChild(list);continue;
+    }
+    if(lines[i].trim()){const p=el('p');appendInline(p,lines[i],!fence && !fenceLine,!fence && !fenceLine);frag.appendChild(p);}i++;
   }
   return frag;
 }
@@ -534,7 +694,7 @@ function refreshSide() {
   const sub = $("sub"); sub.textContent = "";
   sub.appendChild(el("span", "", DATA.chat.mode === "direct" ? "单聊" : `${seats.size} 位顾问视角`));
   sub.appendChild(el("span", "tag" + (DATA.chat.simulated ? " sim" : ""), DATA.chat.simulated ? "模拟案例" : "真实决策"));
-  if (LIVE) sub.appendChild(el("span", "tag " + (presence === "offline" ? "away" : "live"), presence === "offline" ? "顾问团暂离" : "顾问团在线"));
+  if (LIVE) sub.appendChild(el("span", "tag " + (presence === "offline" ? "away" : "live"), presence === "offline" ? "未检测到代理监听" : "代理最近有活动"));
   else sub.appendChild(el("span", "tag", "聊天记录"));
 }
 
@@ -591,17 +751,19 @@ function openProfile(slug) {
 
 /* ---------- composer (live only) ---------- */
 const input = $("input");
-let sending = false;
+let sending = false, lastSavedId = 0;
 function updateStatus() {
   if (!LIVE) return;
   const status = $("status"); const mineLast = [...byId.values()].pop();
   const online = presence !== "offline";
   status.className = "status " + (online ? "on" : "off");
-  $("statusText").textContent = failures > 3 ? "群聊室已离线。回到对话里让顾问团重新打开。"
-    : presence === "thinking" ? (mineLast && mineLast.from === "user" ? "顾问们收到了，正在准备回复。" : "顾问们刚回复完，想接着聊就直接说。")
-    : online ? "顾问团在线，发言后他们会在这里回复。" : "顾问团暂时不在线：回到 Claude / Codex 的对话里说一声“回群里”，他们会接着聊。你现在发的话会留在群里。";
-  if (online && mineLast && mineLast.from === "user" && !queue.length && !draining) showTyping("council", presence === "thinking" ? "顾问们正在准备回复" : "顾问们正在看你的消息");
-  else if (!draining) hideTyping();
+  const pending = (mineLast && mineLast.from === "user") || (lastSavedId && ![...byId.values()].some(m => m.id > lastSavedId && m.from !== "user" && m.kind !== "system"));
+  $("statusText").textContent = failures > 3 ? (lastSavedId ? "已确认保存的消息无需重发；页面连接暂时中断，请回主对话让代理读取群记录。" : "页面连接暂时中断。请回主对话恢复群聊服务；不要将断线理解为已有消息丢失。")
+    : pending ? "消息已保存，等待代理读取或回复，无需重复发送。若尚无回复，回主对话说“读取群里的新消息”；本页不会自动唤醒代理。"
+    : online ? "检测到代理最近活动。网页消息会先保存，实际回复需由活跃代理读取处理。"
+    : "消息会保存到本地群记录；当前未检测到代理监听。发送后可回主对话说“读取群里的新消息”，无需重复发送正文。";
+  // Presence is a short-lived activity hint, not a delivery/read receipt.
+  if (!draining) hideTyping();
 }
 function setReply(msg) {
   replyTo = msg.id; $("replybar").hidden = false; $("replybar").style.setProperty("--qhue", hue(msg.from) || "currentColor");
@@ -659,12 +821,14 @@ async function sendMessage() {
     const res = await fetch("/api/say", {method: "POST", headers: {"Content-Type": "application/json", "X-Room-Token": LIVE.token}, body: JSON.stringify({text, reply_to: target})});
     const body = await res.json();
     if (!res.ok) throw new Error(body.error || "发送失败");
+    lastSavedId = Math.max(lastSavedId, body.id || 0);
+    updateStatus();
     // Only clear the draft we sent. Edits and a newly selected reply belong to the next message.
     if (input.value === draft && replyTo === target) {
       input.value = ""; replyTo = null; $("replybar").hidden = true;
     }
     poll();
-  } catch (err) { $("status").className = "status off"; $("statusText").textContent = "没发出去：" + err.message;
+  } catch (err) { $("status").className = "status off"; $("statusText").textContent = "未确认保存结果，请先查看群记录再决定是否重试，避免重复发送：" + err.message;
   } finally { sending = false; button.textContent = label; grow(); }
 }
 function updateDepth(info) {
