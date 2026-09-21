@@ -38,7 +38,30 @@
     return pages;
   }
 
-  if (typeof document === 'undefined') { module.exports = {planPages, zip, pdf}; return; }
+  // Starts include the date label immediately before each message. The first
+  // unit starts at zero so title/notice always accompany the first message.
+  function planWholeMessages(height, capacity, messageStarts, mode) {
+    if (!Number.isFinite(height) || height <= 0 || !Number.isFinite(capacity) || capacity <= 0 || !['bubble', 'whole'].includes(mode)) throw new Error('完整气泡分页参数无效。');
+    const starts = [0, ...messageStarts.filter(y => y > 0 && y < height)];
+    if (starts.some((y,i) => i && y <= starts[i-1])) throw new Error('消息边界顺序无效。');
+    const pages=[]; let start=0, end=starts[1] ?? height;
+    for(let i=1;i<starts.length;i++) {
+      const nextEnd=starts[i+1] ?? height;
+      if(mode==='whole' && nextEnd-start<=capacity) end=nextEnd;
+      else { pages.push({start,end}); start=starts[i]; end=nextEnd; }
+    }
+    pages.push({start,end});
+    if(pages.length>MAX_PAGES) throw new Error('内容超过 80 张，请先缩小讨论范围再导出。');
+    return pages;
+  }
+  function checkRasterHeight(height, whole=false) {
+    const pixels=Math.round(height*SCALE);
+    if(!Number.isFinite(height) || height<=0 || WIDTH*SCALE*pixels>MAX_PIXELS || pixels>16384) {
+      throw new Error(whole ? '有完整消息超过浏览器单图安全尺寸，无法在不切断气泡的情况下导出。请缩短该条消息，或自行改选“智能分割多张”；不会自动截断。' : '长图超过浏览器安全尺寸，请选择智能分割多张。');
+    }
+  }
+
+  if (typeof document === 'undefined') { module.exports = {planPages, planWholeMessages, checkRasterHeight, zip, pdf}; return; }
   addEventListener('pagehide', clearURLs);
 
   async function snapshot() {
@@ -58,6 +81,15 @@
       const blocks = [...stage.querySelector('.col').children];
       const boundaries = blocks.slice(1).map((node, i) => (blocks[i].getBoundingClientRect().bottom + node.getBoundingClientRect().top) / 2 - origin);
       boundaries.push(height);
+      const messageStarts = [];
+      for(let i=0;i<blocks.length;i++) {
+        if(!blocks[i].classList.contains('msg')) continue;
+        let group=i;
+        while(group>0 && blocks[group-1].classList.contains('day')) group--;
+        messageStarts.push(group===0 ? 0 : (blocks[group-1].getBoundingClientRect().bottom + blocks[group].getBoundingClientRect().top)/2-origin);
+      }
+      // Header/date-only empty conversations still export one useful image.
+      if(messageStarts.length) messageStarts[0]=0;
       // All line and image rectangles form a union of protected vertical bands.
       // Cutting only in the complement keeps glyphs and avatars intact.
       const bands = [];
@@ -84,11 +116,12 @@
       });
       copy.style.inset = 'auto'; copy.style.insetInline = 'auto'; copy.style.insetBlock = 'auto'; copy.style.position = 'relative'; copy.style.left = '0'; copy.style.top = '0'; copy.style.margin = '0';
       copy.style.height = height + 'px';
-      return {height, boundaries, safeGaps, markup: new XMLSerializer().serializeToString(copy), background: getComputedStyle(stage).backgroundColor, ink: getComputedStyle(stage).color};
+      return {height, boundaries, messageStarts, safeGaps, markup: new XMLSerializer().serializeToString(copy), background: getComputedStyle(stage).backgroundColor, ink: getComputedStyle(stage).color};
     } finally { stage.remove(); }
   }
 
   async function raster(snapshot, page, outputHeight, index, count, split, mime = 'image/png') {
+    checkRasterHeight(outputHeight);
     const contentHeight = page.end-page.start;
     const head = split ? 22 : 0;
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${outputHeight}"><foreignObject x="0" y="${head}" width="${WIDTH}" height="${contentHeight}"><div xmlns="http://www.w3.org/1999/xhtml" style="width:${WIDTH}px;height:${contentHeight}px;overflow:hidden"><div style="transform:translateY(-${page.start}px)">${snapshot.markup}</div></div></foreignObject></svg>`;
@@ -162,12 +195,18 @@
       sheet.append(el('h3','','导出聊天记录'),el('p','foot','保留头像、对话气泡、引用与决议卡。1080 像素高清图片或多页 PDF，全部在本机生成。PDF 保留聊天视觉样式，文字不可选中复制。'));
       const options=el('div','export-options');
       const modeLabel=el('label','','导出方式'), mode=el('select');mode.id='exportMode';
-      for(const [value,text] of [['long','单张长图'],['split','智能分割多张'],['pdf','PDF 文档（智能分页）']]){const o=el('option','',text);o.value=value;mode.append(o);}modeLabel.append(mode);
+      for(const [value,text] of [['long','单张长图'],['split','智能分割多张'],['bubble','单个气泡一张（不切断）'],['whole','完整气泡拼图（不切断）'],['pdf','PDF 文档（智能分页）']]){const o=el('option','',text);o.value=value;mode.append(o);}modeLabel.append(mode);
       const ratioLabel=el('label','','页面比例'), ratio=el('select');ratio.id='exportRatio';
       for(const [value,text] of [['16/9','9:16 · 常规手机'],['19.5/9','9:19.5 · 手机长屏'],['4/3','3:4 · 图文分享'],['5/4','4:5 · 信息流'],['1/1','1:1 · 正方形']]){const o=el('option','',text);o.value=value;ratio.append(o);}ratioLabel.append(ratio);ratioLabel.hidden=true;
       const a4=el('option','','A4 · 文档');a4.value='297/210';a4.hidden=true;ratio.prepend(a4);
-      mode.addEventListener('change',()=>{ratioLabel.hidden=mode.value==='long';a4.hidden=mode.value!=='pdf';if(mode.value==='pdf')ratio.value=a4.value;else if(ratio.value===a4.value)ratio.value='16/9';});options.append(modeLabel,ratioLabel);sheet.append(options);
-      sheet.append(el('p','foot','智能分割优先保留整条消息；超长内容在文字行间续接。每张保持所选比例，必要时留白。导出的是当前已显示的消息。'));
+      const hint=el('p','foot');hint.id='exportHint';
+      function updateMode(){
+        ratioLabel.hidden=['long','bubble'].includes(mode.value);a4.hidden=mode.value!=='pdf';
+        if(mode.value==='pdf')ratio.value=a4.value;else if(ratio.value===a4.value)ratio.value='16/9';
+        const hints={long:'单张长图保持全部聊天内容，不受页面比例限制。',split:'每张保持所选比例。优先整条消息分页；超长内容在文字行间续接。',pdf:'按所选页面比例智能分页；超长消息在文字行间续接。',bubble:'每条完整消息一张，按内容自然高度导出，不固定比例。头像、姓名、时间、引用及卡片一起保留；标题公告并入首张，日期跟随对应消息。',whole:'按所选比例尽量放入多个完整消息，放不下就换下一张。超出一页的消息独占一张更高图片，不截断；标题公告并入首张。'};
+        hint.textContent=hints[mode.value]+(['bubble','whole'].includes(mode.value)?' 单条超出浏览器安全尺寸会报错，不会自动切开。':'')+' 导出当前已显示的消息。';
+      }
+      mode.addEventListener('change',updateMode);updateMode();options.append(modeLabel,ratioLabel);sheet.append(options,hint);
       const action=el('button','send','生成预览');action.id='exportGenerate';action.type='button';
       const status=el('p','export-status');status.id='exportStatus';status.setAttribute('role','status');
       const downloads=el('div','export-actions'), results=el('div','export-results');results.id='exportResults';
@@ -177,14 +216,17 @@
         if(draining || queue.length) { status.textContent='正在回放或接收消息，请等待对话显示完整后再导出。'; return; }
         busy=true;action.disabled=true;mode.disabled=true;ratio.disabled=true;clearURLs();results.textContent='';downloads.textContent='';status.textContent='正在准备聊天内容…';
         try{
-          const snap=await snapshot(), isPDF=mode.value==='pdf', split=mode.value!=='long';
+          const snap=await snapshot(), isPDF=mode.value==='pdf', split=mode.value!=='long', whole=['bubble','whole'].includes(mode.value);
           const [h,w]=ratio.value.split('/').map(Number), target=Math.round(WIDTH*h/w);
           if(!split && (WIDTH*SCALE*Math.ceil(snap.height*SCALE)>MAX_PIXELS || snap.height*SCALE>16384))throw new Error('内容过长，单张会超过浏览器安全尺寸。请选择“智能分割多张”。');
-          const pages=split?planPages(snap.height,target-52,snap.boundaries,snap.safeGaps):[{start:0,end:snap.height}];
+          const pages=whole?planWholeMessages(snap.height,target-52,snap.messageStarts,mode.value):split?planPages(snap.height,target-52,snap.boundaries,snap.safeGaps):[{start:0,end:snap.height}];
+          const outputHeights=pages.map(page=>whole?(mode.value==='bubble'?Math.ceil(page.end-page.start)+52:Math.max(target,Math.ceil(page.end-page.start)+52)):split?target:snap.height);
+          // Preflight every page before image decoding/allocation or partial downloads.
+          outputHeights.forEach(height=>checkRasterHeight(height,whole));
           const files=[];let totalBytes=0;
           for(let i=0;i<pages.length;i++){
             status.textContent=`正在生成 ${i+1} / ${pages.length} 张…`;await tick();
-            const outputHeight=split?target:snap.height, blob=await raster(snap,pages[i],outputHeight,i,pages.length,split,isPDF?'image/jpeg':'image/png');
+            const outputHeight=outputHeights[i], blob=await raster(snap,pages[i],outputHeight,i,pages.length,split,isPDF?'image/jpeg':'image/png');
             totalBytes+=blob.size;if(totalBytes>150*1024*1024)throw new Error('图片总量超过 150 MB，请缩小讨论范围后重试。');
             const name=`${filename()}-${String(i+1).padStart(2,'0')}.${isPDF?'jpg':'png'}`, url=objectURL(blob);files.push({name,blob,width:WIDTH*SCALE,height:Math.round(outputHeight*SCALE)});
             const figure=el('figure','export-preview'), img=el('img');img.src=url;img.alt=`聊天图片 ${i+1}，共 ${pages.length} 张`;img.loading='lazy';

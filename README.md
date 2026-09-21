@@ -8,7 +8,7 @@
 
 这里的顾问是 AI 运用整理后方法形成的分析视角，不是本人，不代表本人认可，也不保证真人顾问等效或商业结果。
 
-[下载 v2.2.0 安装包](https://github.com/CarGod/product-advisory-council/releases/tag/v2.2.0) · [技能入口](product-advisory-council/SKILL.md) · [群聊与导出说明](product-advisory-council/references/group-chat.md)
+[下载 v2.2.1 安装包](https://github.com/CarGod/product-advisory-council/releases/tag/v2.2.1) · [技能入口](product-advisory-council/SKILL.md) · [群聊与导出说明](product-advisory-council/references/group-chat.md)
 
 ## 可以帮你讨论什么
 
@@ -42,7 +42,7 @@
 
 ## 安装一次即可
 
-1. 在 [Releases](https://github.com/CarGod/product-advisory-council/releases) 下载 `product-advisors-public-v2.2.0.zip`。
+1. 在 [Releases](https://github.com/CarGod/product-advisory-council/releases) 下载 `product-advisors-public-v2.2.1.zip`。
 2. 解压后保留完整的 `product-advisory-council/` 文件夹；不要只复制 `SKILL.md`，也不需要分别安装每个人。
 3. 将该文件夹放入你的 AI 客户端支持的技能目录，或通过客户端技能安装入口导入完整技能包。客户端的具体支持与安装入口以其自身说明为准。
 
@@ -103,6 +103,8 @@
 网页包含头像、发言气泡、方法卡及决议卡。方法链接显示“编号 + 标题”，点击可在右侧查看详情。支持将当前聊天导出为PDF；PDF保留聊天视觉样式，文字以图片呈现，不是可搜索的文本PDF。右上角的「导出长图」支持：
 
 - 单张长图，保留聊天布局。
+- 单气泡一张：每条完整消息独立导出，图片采用自然高度。
+- 整气泡拼图：按选择的尺寸组合完整消息；超长气泡单独增高，绝不切断气泡。超出安全渲染尺寸时明确拒绝并提示。
 - 智能分图，可选 **9:16、9:19.5、3:4、4:5、1:1**。
 - 按消息空隙分页；过长发言按段落或文字行拆分，尽量保留可读性。
 - 预览后逐张下载，或打包下载。
@@ -139,4 +141,4 @@ python3 scripts/search.py '用户价值 定价' --person yu-jun --limit 6
 python3 scripts/chatroom.py --help
 ```
 
-本次发布为 **v2.2.0 产品与AI顾问扩展版**。功能验证覆盖方法检索、人物筛选、聊天记录与渲染、讨论档位、图片分页及私有卡片快照隔离；这些检查不代表决策准确率或经营效果评测。详见[功能与效果边界](product-advisory-council/references/evaluation-status.md)。
+本次发布为 **v2.2.1 产品与AI顾问扩展版**。功能验证覆盖方法检索、人物筛选、聊天记录与渲染、讨论档位、图片分页及私有卡片快照隔离；这些检查不代表决策准确率或经营效果评测。详见[功能与效果边界](product-advisory-council/references/evaluation-status.md)。
