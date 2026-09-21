@@ -1,0 +1,1658 @@
+[
+  {
+    "id": "SJ-P01",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "聚焦投入",
+    "summary": "删减分散路线图以提升关键产品投入。",
+    "conditions": [
+      "资源分散、核心价值清楚"
+    ],
+    "boundaries": [
+      "聚焦须同时核算退出业务的用户、员工、资产与现金代价，不照搬削减比例。",
+      "事后设想的更好路径不等于已经验证的经营结果。"
+    ],
+    "questions": [
+      "哪个项目没有独立存在理由？",
+      "为了支持核心业务而维持的附带业务，实际带来现金还是持续吸收资金与注意力？",
+      "停止后要承担哪些用户、员工、资产与资金代价？"
+    ],
+    "actions": [
+      "列保留/合并/停止候选及迁移影响，分列现金贡献、资金需求和退出成本",
+      "把已经观察到的结果与如果当初改走另一条路的回想分开"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P02",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "需求反馈速度",
+    "summary": "缩短供给链反馈可减少长周期猜测。",
+    "conditions": [
+      "库存和响应时间显著影响匹配"
+    ],
+    "boundaries": [
+      "不忽视规模效率与韧性"
+    ],
+    "questions": [
+      "多久后需求才影响生产？"
+    ],
+    "actions": [
+      "测量反馈延迟与库存风险"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P03",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "品牌与价值",
+    "summary": "品牌表达应清楚说明用户为何在乎。",
+    "conditions": [
+      "需要形成稳定辨识"
+    ],
+    "boundaries": [
+      "不能用叙事掩盖产品缺陷"
+    ],
+    "questions": [
+      "用户愿意记住哪项价值？"
+    ],
+    "actions": [
+      "将主张关联可展示体验"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P04",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "交付质量平衡",
+    "summary": "对最好与可逐步改善的更好作明确取舍。",
+    "conditions": [
+      "完美追求已阻碍交付"
+    ],
+    "boundaries": [
+      "不能牺牲安全底线"
+    ],
+    "questions": [
+      "多等一轮能带来什么可验证价值？"
+    ],
+    "actions": [
+      "定义发布底线及下一轮提升"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P05",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "成果与潜力",
+    "summary": "人才判断追溯贡献，同时给新人学习潜力留空间。",
+    "conditions": [
+      "需形成产品团队"
+    ],
+    "boundaries": [
+      "过去成果不等于个人因果"
+    ],
+    "questions": [
+      "候选人实际改变了什么？"
+    ],
+    "actions": [
+      "核查作品与协作贡献"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P06",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "全流程体验",
+    "summary": "试用、上手、求助应作为产品体验整体。",
+    "conditions": [
+      "购买和使用中有明显断点"
+    ],
+    "boundaries": [
+      "端到端体验可用多种渠道实现，不自动要求重资产直营。"
+    ],
+    "questions": [
+      "用户卡住后如何恢复？"
+    ],
+    "actions": [
+      "实测发现至求助的任务路径"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P07",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "把技术转成人的任务",
+    "summary": "技术方向需以使用方式、学习门槛和环境描述。",
+    "conditions": [
+      "技术驱动项目尚缺体验定义"
+    ],
+    "boundaries": [
+      "预测不等于需求验证"
+    ],
+    "questions": [
+      "普通用户不用理解什么技术也能受益？"
+    ],
+    "actions": [
+      "定义情境任务与最小演示"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P08",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "愿景与现实分层",
+    "summary": "保留远期方向并明确现在尚未解决的障碍。",
+    "conditions": [
+      "早期探索"
+    ],
+    "boundaries": [
+      "不把远期愿景写为近期承诺"
+    ],
+    "questions": [
+      "哪项能力现在还不存在？"
+    ],
+    "actions": [
+      "分别记录已知、假设和待突破"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P09",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "竞争中的互补",
+    "summary": "竞争者可能同时是关键生态伙伴。",
+    "conditions": [
+      "互补产品提高共同用户价值"
+    ],
+    "boundaries": [
+      "合作须检验依赖、知识披露和谈判成本。",
+      "合作意向不等于完成交付或获得长期收益，不默认要求无偿披露。"
+    ],
+    "questions": [
+      "对方帮助用户完成什么？",
+      "双方理解的是互助、许可还是付费服务，前置承诺是否一致？"
+    ],
+    "actions": [
+      "画竞争合作关系与失去伙伴的代价",
+      "合作开始前明确知识披露边界、预期回报和各方对关系的理解，并记录后来改变条件的理由"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P10",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "存量迁移成本",
+    "summary": "创新幅度需考虑既有用户习惯和兼容负担。",
+    "conditions": [
+      "既有平台用户众多"
+    ],
+    "boundaries": [
+      "不能以兼容为借口拒绝改进"
+    ],
+    "questions": [
+      "改变会让哪些旧任务失效？"
+    ],
+    "actions": [
+      "设计渐进迁移和可逆验证"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P11",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "核心与扩展",
+    "summary": "通用核心可结合软件扩展服务多种任务。",
+    "conditions": [
+      "具备平台和生态条件"
+    ],
+    "boundaries": [
+      "不等于初创期面向所有人"
+    ],
+    "questions": [
+      "哪些需求真正共享核心？"
+    ],
+    "actions": [
+      "区分核心体验与专用扩展"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "SJ-P12",
+    "person": "steve-jobs",
+    "person_name": "乔布斯",
+    "kind": "principle",
+    "title": "跨领域设计输入",
+    "summary": "其他领域经验可能给产品带来新的表现方式。",
+    "conditions": [
+      "探索预算可承受"
+    ],
+    "boundaries": [
+      "回顾故事有幸存者偏差"
+    ],
+    "questions": [
+      "灵感具体改善哪个用户任务？"
+    ],
+    "actions": [
+      "将跨领域启发转为可测试原型"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P01",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "相对用户价值",
+    "summary": "评价新方案须同时看旧方案和换用成本。",
+    "conditions": [
+      "目标情境与替代品明确"
+    ],
+    "boundaries": [
+      "这是定性比较工具，不能直接套公式估分。",
+      "发现替代方案的不足，不意味着可以主动破坏替代品。"
+    ],
+    "questions": [
+      "用户今天怎么做？"
+    ],
+    "actions": [
+      "分列新增收益、旧收益和迁移成本"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P02",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "用户是情境需求",
+    "summary": "同一个人在不同场景有不同需求，人口标签不够。",
+    "conditions": [
+      "产品定位或需求访谈"
+    ],
+    "boundaries": [
+      "不否定人口变量的辅助价值"
+    ],
+    "questions": [
+      "哪个时刻什么任务触发使用？"
+    ],
+    "actions": [
+      "按情境采样并记录替代方案"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P03",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "怀疑和自我更新",
+    "summary": "结论与个人身份分开，持续检查前提与证据。",
+    "conditions": [
+      "结论在不确定条件下形成"
+    ],
+    "boundaries": [
+      "怀疑不是永不决策"
+    ],
+    "questions": [
+      "什么证据会使你改主意？"
+    ],
+    "actions": [
+      "写出可证伪假设及复盘日期"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P04",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "商业闭环",
+    "summary": "需求、生产、销售和成本收益应共同进入产品判断。",
+    "conditions": [
+      "承担完整业务结果"
+    ],
+    "boundaries": [
+      "完整业务责任不取消专业执行分工。",
+      "整体长期盈利不要求每个组成部分立即盈利，但知识、团队和信任的积累也需要可检验依据。"
+    ],
+    "questions": [
+      "谁使用、谁付费、谁负担成本？"
+    ],
+    "actions": [
+      "画价值交换及交付路径"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P05",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "从利他到互惠",
+    "summary": "长期方案需要考虑各参与方能否持续获益。",
+    "conditions": [
+      "多边生态或持续服务"
+    ],
+    "boundaries": [
+      "互惠须尊重自愿与真实信息，不能为损害弱方辩护。",
+      "交易前的获益预期不保证事后各方都获益。"
+    ],
+    "questions": [
+      "谁持续付出却无法回报？"
+    ],
+    "actions": [
+      "检查供应者激励与退出风险"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P06",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "权衡机会成本",
+    "summary": "需求为真且可行，仍须与其他资源用途比较。",
+    "conditions": [
+      "有限人力资金时间"
+    ],
+    "boundaries": [
+      "无法完整量化时应标区间"
+    ],
+    "questions": [
+      "做它意味着不做什么？"
+    ],
+    "actions": [
+      "列替代投资和不做选项"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P07",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "反馈中成长",
+    "summary": "完整的假设、执行、验证循环比资历标签更有用。",
+    "conditions": [
+      "能接触真实结果且有适度容错"
+    ],
+    "boundaries": [
+      "高增长不自动证明个人能力"
+    ],
+    "questions": [
+      "过去哪个判断被事实修正？"
+    ],
+    "actions": [
+      "保存决策与结果的配对记录"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P08",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "组织也是边界条件",
+    "summary": "产品方案要结合实际决策权、协作和人才条件。",
+    "conditions": [
+      "跨团队方案依赖执行"
+    ],
+    "boundaries": [
+      "不能把组织障碍当永远不尝试的理由"
+    ],
+    "questions": [
+      "谁能对结果负责并调资源？"
+    ],
+    "actions": [
+      "列决策者、冲突和最小协同机制"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P09",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "冷启动需求密度",
+    "summary": "社区启动要看同主题用户能否及时相遇。",
+    "conditions": [
+      "兴趣互动社区"
+    ],
+    "boundaries": [
+      "大流量未必是高密度"
+    ],
+    "questions": [
+      "同一主题一天有多少可互动用户？"
+    ],
+    "actions": [
+      "选集中兴趣种子群并观察回访"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P10",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "补足核心任务",
+    "summary": "新产品价值可来自填补现有核心产品的任务缺口。",
+    "conditions": [
+      "已有产品需求未被完成"
+    ],
+    "boundaries": [
+      "协同必须有用户证据"
+    ],
+    "questions": [
+      "它使旧任务完成得更好吗？"
+    ],
+    "actions": [
+      "测核心任务成功率而非仅新产品流量"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P11",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "结果不证明理由",
+    "summary": "事后成功失败不足以证实当时的归因。",
+    "conditions": [
+      "历史复盘和战略判断"
+    ],
+    "boundaries": [
+      "仍应跟踪结果而非只评过程"
+    ],
+    "questions": [
+      "有没有其他路径导致相同结果？"
+    ],
+    "actions": [
+      "保留原判断及反事实解释"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P12",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "运营作用随阶段变化",
+    "summary": "用户价值、替代成本和业务瓶颈决定产品运营的分工。",
+    "conditions": [
+      "已知业务瓶颈"
+    ],
+    "boundaries": [
+      "不能把补贴视为永久净价值"
+    ],
+    "questions": [
+      "当前主要问题是没价值还是难采用？"
+    ],
+    "actions": [
+      "拆解认知、获取、使用与持续留存"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P13",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "交易成本要跨参与方核算",
+    "summary": "把搜索与衡量、协商决策、执行保证中的阻力一起列入方案成本。",
+    "conditions": [
+      "多方交易流程或标准化服务"
+    ],
+    "boundaries": [
+      "降低一方成本可能把成本转移给其他参与方，应核算净影响。",
+      "未经校准的定性关系不能充当精确计量公式。"
+    ],
+    "questions": [
+      "省下的成本转移给了谁？"
+    ],
+    "actions": [
+      "画出三阶段流程，比较净成本及供给变化"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P14",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "按效用类型确定投入上限",
+    "summary": "把底线、够用、更多更好及惊喜属性区别处理，随人和情境校准。",
+    "conditions": [
+      "需求排序和质量投入"
+    ],
+    "boundaries": [
+      "分类是情境工具；底线问题不能靠总体平均指标掩盖。"
+    ],
+    "questions": [
+      "这项体验不足会拒用，还是改好也无感？"
+    ],
+    "actions": [
+      "按目标情境检验边际收益和坏案例率"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P15",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "先检验信念和目标再优化行动",
+    "summary": "决策错误可能来自前提或目标，不能仅通过更快执行修复。",
+    "conditions": [
+      "战略选择和异常复盘"
+    ],
+    "boundaries": [
+      "价值观不等于可验证事实；不可把不确定性变成随意归因。"
+    ],
+    "questions": [
+      "若目标本身错了，最好的执行会怎样？"
+    ],
+    "actions": [
+      "分别记录前提证据、目标取舍、行动及复核触发器"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P16",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "实验方法受反馈成本限制",
+    "summary": "线上便宜且可逆的反馈适合快速对照；线下服务和新方向还需用户与交易模型补足。",
+    "conditions": [
+      "制定验证方案"
+    ],
+    "boundaries": [
+      "未测量不代表没有效果；历史指标不保证新情境成立，也不能免除检验。"
+    ],
+    "questions": [
+      "试错代价和外部影响是什么？"
+    ],
+    "actions": [
+      "按成本与可逆性选择小实验、访谈或分阶段验证"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "YJ-P17",
+    "person": "yu-jun",
+    "person_name": "俞军",
+    "kind": "principle",
+    "title": "责任判断与补偿机制分别设计",
+    "summary": "平台可先承担部分无过错损失，再改进识别与规则，避免强迫一方吞下系统问题。",
+    "conditions": [
+      "多边平台纠纷和异常订单"
+    ],
+    "boundaries": [
+      "补偿不等于无限兜底，须控制滥用、预算和上游问题。",
+      "赔付标准应结合具体业务与责任条件制定。"
+    ],
+    "questions": [
+      "是谁造成问题，谁先承担损失，谁能降低下次概率？"
+    ],
+    "actions": [
+      "分别制定责任、补偿、反滥用和上游改进方案"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P01",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "用任务效率而非滞留衡量工具价值",
+    "summary": "工具型产品应帮助完成任务，并通过持续价值促使用户再次使用。",
+    "conditions": [
+      "用户有明确任务"
+    ],
+    "boundaries": [
+      "娱乐消费不以越快结束越好，工具也仍需持续留存。",
+      "节省用户时间的设计意图不等于已经改善实际耗时或关系。"
+    ],
+    "questions": [
+      "用户本次要完成什么？"
+    ],
+    "actions": [
+      "测完成率、时间与复用；分离任务时长和无效停留"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P02",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "把复杂度放到用户体验中衡量",
+    "summary": "功能数量不是臃肿的充分判据，能否方便实现目标更关键。",
+    "conditions": [
+      "多功能产品可用性设计"
+    ],
+    "boundaries": [
+      "隐藏功能不能消除维护和学习成本。",
+      "界面入口数量不是普适标准，应按任务判断。",
+      "最小功能范围仍须覆盖完整操作，不能把复杂度转嫁给用户。"
+    ],
+    "questions": [
+      "新功能让谁多做几步？",
+      "最常做的切换是否多一步？选完选项是否会被误认为已提交？"
+    ],
+    "actions": [
+      "比较现流程、增加能力与不做；走查关键任务",
+      "按关键任务走查入口、选择、提交及完成反馈，记录频率与错误，而非只数功能。"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P03",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "用明确合理性做取舍",
+    "summary": "舍弃应因目标不成立、体验不好或验证行不通，而不是把克制当自我目的。",
+    "conditions": [
+      "多个候选需求争夺资源"
+    ],
+    "boundaries": [
+      "删除功能并不自动正确，可能牺牲特定情境的便利。",
+      "暂缓实施可能让原有损害持续，须记录不做的成本。"
+    ],
+    "questions": [
+      "为什么不做？依据是什么？",
+      "候选方案新增了什么副作用？暂缓时原问题还有多大损害？"
+    ],
+    "actions": [
+      "记录用户价值、验证信号与舍弃原因"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P04",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "平台合作先审查用户价值",
+    "summary": "资源互换与运营目标不能替代用户实际收益。",
+    "conditions": [
+      "平台合作、推送、商业化"
+    ],
+    "boundaries": [
+      "用户价值判断须结合可持续的商业与交付条件。"
+    ],
+    "questions": [
+      "谁得益，谁被打扰？"
+    ],
+    "actions": [
+      "列双方收益及用户成本，检验接收者自主意愿"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P05",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "公平规则保护生态参与动机",
+    "summary": "特权和作弊可能破坏普通参与者继续投入的意愿。",
+    "conditions": [
+      "排名、激励及开放平台"
+    ],
+    "boundaries": [
+      "不能凭单一信号直接定罪，检测机制须验证误伤并允许申诉。"
+    ],
+    "questions": [
+      "规则能否统一适用？如何申诉？"
+    ],
+    "actions": [
+      "识别作弊收益与误伤，设计核验及反馈"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P06",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "让第三方获得真实服务与创作回报",
+    "summary": "平台应创造第三方可持续服务用户的条件，不只消耗流量。",
+    "conditions": [
+      "多边平台和创作者生态"
+    ],
+    "boundaries": [
+      "不把去中心化当永久无推荐机制"
+    ],
+    "questions": [
+      "参与者如何获得可持续回报？"
+    ],
+    "actions": [
+      "同时评估用户价值、原创供给、服务收入和治理成本"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P07",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "将服务使用与持续订阅分开",
+    "summary": "一次性任务不应默认变成长期消息订阅，提醒需围绕用户授权的任务。",
+    "conditions": [
+      "低频服务、通知、轻应用"
+    ],
+    "boundaries": [
+      "服务授权不等于营销授权，不能用主动推荐的目标替代用户同意。",
+      "通知范围须结合实际任务与当前适用规则制定。"
+    ],
+    "questions": [
+      "用户同意的是服务还是营销？"
+    ],
+    "actions": [
+      "拆开使用入口与订阅动作，限制提醒范围和次数"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P08",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "从当地需求拆解国际化障碍",
+    "summary": "文化解释应进一步落到当地用户、替代方案和市场条件。",
+    "conditions": [
+      "跨地区产品评估"
+    ],
+    "boundaries": [
+      "未经验证的国家或文化概括不能代替当地用户研究。"
+    ],
+    "questions": [
+      "哪个具体任务在当地不同？"
+    ],
+    "actions": [
+      "访谈目标用户，记录替代、阻力和实际场景"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P09",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "创作载体决定谁能参与",
+    "summary": "创作门槛及终端会限制供给，长文章不应被当成人人表达的唯一形式。",
+    "conditions": [
+      "内容平台、供给冷启动"
+    ],
+    "boundaries": [
+      "降低格式或终端门槛不自动带来优质供给或更多参与。",
+      "单个产品的参与失败不足以否定整类创作方式。"
+    ],
+    "questions": [
+      "谁因为工具或格式不能表达？",
+      "当前瓶颈是找不到内容、内容不值得读，还是想写却不能完成？各自有什么证据？"
+    ],
+    "actions": [
+      "分别检查阅读任务完成、内容吸引力和创作者参与，避免用一次界面改版同时替三个假设作结论",
+      "比较移动/PC、图文/短视频的完成成本与有用供给；预先明确哪一群人应新增参与"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P10",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "预先讨论失败路径并逐步验证",
+    "summary": "长期平台探索需要识别会使方案失败的约束，而非只讲增长前景。",
+    "conditions": [
+      "新平台或核心循环未明"
+    ],
+    "boundaries": [
+      "探索预算与验证期限须匹配团队资源，不靠公开承诺制造压力。",
+      "没有通用的初始用户量或自然增长阈值，也不默认要求暂停推广。",
+      "重复描述同一次经历不能当成多份独立证据。"
+    ],
+    "questions": [
+      "哪个环节不成立就无法持续？",
+      "放大推广前要看到怎样的自发采用或传播信号？这些信号是否可能来自导入或补贴？"
+    ],
+    "actions": [
+      "列失败假设，设计最小验证与停止条件",
+      "把自然采用信号与渠道放量信号分开，并写明等待验证的时间和资源预算"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P11",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "团队组织与认知变化匹配",
+    "summary": "授权小团队与领域思考者，让迭代中增长的认识进入决策。",
+    "conditions": [
+      "不确定性较高的产品探索"
+    ],
+    "boundaries": [
+      "授权不取消必要流程、质量责任与集体讨论。",
+      "统一方向仍须理解反对意见，独立设计不等于禁止竞争研究。"
+    ],
+    "questions": [
+      "计划是否允许吸收新证据？"
+    ],
+    "actions": [
+      "明确决策责任和复盘周期，保留重新排序空间"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P12",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "方法不是成功保证",
+    "summary": "人物经验需检查适用前提，不能用表面形式推导成功。",
+    "conditions": [
+      "应用任何人物方法卡"
+    ],
+    "boundaries": [
+      "经验启发不是成功保证，但仍须提出可检验假设。",
+      "练习时长、个案或人群刻板概括不能充当普适规律。",
+      "反对照搬用户提出的方案，不等于拒绝用户研究与细节反馈。"
+    ],
+    "questions": [
+      "我们借用的是原理还是外观？"
+    ],
+    "actions": [
+      "给每条建议写反例与可推翻证据"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P13",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "免费产品的可持续性可来自相关能力",
+    "summary": "直接收费或广告不是唯一商业化路径，相关企业产品可承接技术品牌价值。",
+    "conditions": [
+      "免费工具有可复用技术与信任资产"
+    ],
+    "boundaries": [
+      "免费是待比较的商业选择，不是永久承诺或当下最优方案。"
+    ],
+    "questions": [
+      "谁为哪些可交付价值付费？"
+    ],
+    "actions": [
+      "比较直接收费、服务、相关企业产品的成本和用户影响"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P14",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "把信息与关系外部性纳入产品判断",
+    "summary": "平台设计会改变信息触达、隐私和社交关系，需要审查规模放大的后果。",
+    "conditions": [
+      "社交、推荐、通知及数据功能"
+    ],
+    "boundaries": [
+      "价值取舍不等于已验证的行为因果模型。",
+      "社交与算法推荐的优劣须在可比用户、内容和曝光条件下检验。",
+      "回复压力、公共隐私和受众管理是不同机制，效果证据不能互相替代。",
+      "分组增加操作成本，但仍可能满足特定用户需要。"
+    ],
+    "questions": [
+      "便利是否增加不可见负担？",
+      "谁能看见发布内容，会给发布者带来什么压力与回报？",
+      "社交推荐是否把内容判断转成形象展示，哪些用户因此不愿推荐？"
+    ],
+    "actions": [
+      "同时观察发布动力、受众范围与后悔或撤回信号，不把低曝光直接算作低压力",
+      "区分社交推荐的发现收益和身份展示偏差，比较前先记录内容供给、入口、用户构成与曝光机会"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "ZXL-P15",
+    "person": "zhang-xiaolong",
+    "person_name": "张小龙",
+    "kind": "principle",
+    "title": "把用户提出的功能还原为实际行为和场景",
+    "summary": "用户的功能要求与其要解决的事情并不总相同；可从自发使用、操作阻碍和具体关系中找到需求线索，再比较实现方案。",
+    "conditions": [
+      "功能诉求含糊，或有多种实现路径",
+      "可以观察实际任务并追问动机"
+    ],
+    "boundaries": [
+      "单个自发玩法或未经代表性检验的访谈不能估计普遍需求。",
+      "自身需要可作为探索起点，不能直接代表全体用户。",
+      "不要用局限的调研直接确定方案，也不要因此拒绝细节反馈。"
+    ],
+    "questions": [
+      "用户已经怎样绕路完成这件事？",
+      "不满足所提功能时，究竟卡在哪个对象、场景或步骤？",
+      "哪些人不符合我们的解释？"
+    ],
+    "actions": [
+      "分别记录观察到的行为、用户提出的方案和我们的动机解释；验证时允许推翻解释。",
+      "比较不做、嵌入既有流程和另建功能的完成成本，不预设越少越好。"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P01",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "扩张同时看客户任务与能力复用",
+    "summary": "相邻需求只有与现有能力和资源匹配时才构成可试验的扩张方向。",
+    "conditions": [
+      "考虑新业务或品类"
+    ],
+    "boundaries": [
+      "不能把大平台条件套到小团队"
+    ],
+    "questions": [
+      "可复用什么，缺什么？"
+    ],
+    "actions": [
+      "列需求、能力、增量成本、主业损伤；先小范围试验"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P02",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "价值不只来自折扣",
+    "summary": "用户可能为便利、省心和确定性选择服务，而非只为低价。",
+    "conditions": [
+      "交易型服务"
+    ],
+    "boundaries": [
+      "需按场景判断，不能否认价格敏感"
+    ],
+    "questions": [
+      "哪种不确定性最贵？"
+    ],
+    "actions": [
+      "比较省钱、时间、履约保证的任务证据"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P03",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "本地市场按真实供需范围分析",
+    "summary": "消费者与商户的选择往往在城市或更小区域内，不能只看全国规模。",
+    "conditions": [
+      "本地生活双边市场"
+    ],
+    "boundaries": [
+      "不能把固定人口门槛当通用标准"
+    ],
+    "questions": [
+      "用户实际在哪个半径内选择？"
+    ],
+    "actions": [
+      "按区域看供给、需求、匹配和履约"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P04",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "交易闭环检验服务价值",
+    "summary": "对O2O任务，获取信息通常还需导向真实交易与体验。",
+    "conditions": [
+      "用户意图是消费服务"
+    ],
+    "boundaries": [
+      "信息消费本身可能有独立价值"
+    ],
+    "questions": [
+      "用户最终要完成什么？"
+    ],
+    "actions": [
+      "跟踪发现、选择、购买、履约和复购断点"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P05",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "长期供给要容纳商户可持续收益",
+    "summary": "检验平台收费与规模效率能否支持供给方持续合作，并维持用户选择的丰富度。",
+    "conditions": [
+      "平台与供给方长期合作"
+    ],
+    "boundaries": [
+      "降低费率不必然改善平台或供给方利润，需要实际验证。"
+    ],
+    "questions": [
+      "供应方重复服务后还能赚钱吗？"
+    ],
+    "actions": [
+      "估计双方单位经济与续约，检验补贴退出后的选择"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P06",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "把管理基础能力纳入扩张前提",
+    "summary": "快速增长需要可见的数据、人员和运营能力，暂停扩张可用于巩固。",
+    "conditions": [
+      "规模超过现管理能力"
+    ],
+    "boundaries": [
+      "暂停不自动正确，需机会成本判断"
+    ],
+    "questions": [
+      "哪里已不能准确看见运营？"
+    ],
+    "actions": [
+      "先补关键数据与流程，设恢复扩张证据"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P07",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "明确冲突时的用户价值排序",
+    "summary": "多边利益不能只写都重要，要说明冲突时如何兑现承诺。",
+    "conditions": [
+      "退款、履约、消费者与商家冲突"
+    ],
+    "boundaries": [
+      "利益排序须结合具体承诺，不能遗漏履约人员等受影响参与者。"
+    ],
+    "questions": [
+      "谁承担失败成本？"
+    ],
+    "actions": [
+      "写补偿责任、处理时限和各方影响"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P08",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "保留继续经营的资金与信心",
+    "summary": "产品探索需要避免资金断裂和团队失去继续投入能力。",
+    "conditions": [
+      "创业及资本周期不确定"
+    ],
+    "boundaries": [
+      "不是金融投资建议；需当前财务事实"
+    ],
+    "questions": [
+      "下一轮学习前是否会耗尽资源？"
+    ],
+    "actions": [
+      "以现金与交付负担设置实验规模和停止线"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P09",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "耐心体现为持续具体改善",
+    "summary": "长期思考不等于等待，持续优化供给、服务和成本。",
+    "conditions": [
+      "成熟竞争和长期建设"
+    ],
+    "boundaries": [
+      "不可把无结果投入合理化"
+    ],
+    "questions": [
+      "本阶段产生什么可观察改进？"
+    ],
+    "actions": [
+      "将长期方向拆为服务质量、成本、供给实验"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P10",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "低质低价不是长期价值的充分条件",
+    "summary": "成熟业务需要同时满足体验和多方可持续，而非只依赖补贴。",
+    "conditions": [
+      "成熟外卖及即时零售"
+    ],
+    "boundaries": [
+      "商业主张不能当作普遍证明，早期探索与成熟经营条件不同。"
+    ],
+    "questions": [
+      "退出补贴后为什么还选你？"
+    ],
+    "actions": [
+      "对照品质、服务、真实成本和各方收益"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P11",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "明确人群、关系和任务再选功能",
+    "summary": "社交产品的目标群体和关系形态决定哪些功能值得做，不需包揽全部人群需求。",
+    "conditions": [
+      "早期社交产品定位"
+    ],
+    "boundaries": [
+      "阶段性的功能取舍不等于长期禁令，也不证明商业成功。"
+    ],
+    "questions": [
+      "服务谁，与谁发生什么交流？"
+    ],
+    "actions": [
+      "写清目标人群、关系、任务和排除需求，比较相应功能"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P12",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "自用、反馈和数据共同推动迭代",
+    "summary": "创始人自身需求可启动探索，但还要结合用户反馈和实际数据改进。",
+    "conditions": [
+      "有真实用户接触的早期产品"
+    ],
+    "boundaries": [
+      "团队自用不代表市场需求，也不支持无条件每天发布"
+    ],
+    "questions": [
+      "自用发现的问题是否也发生在目标用户？"
+    ],
+    "actions": [
+      "记录三类信号及冲突，用小改动检验用户任务改善"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P13",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "战略方向正确不代表实施模式成立",
+    "summary": "新业务即使符合公司定位，其交易机制、品控和供应链仍需单独验证。",
+    "conditions": [
+      "邻接业务与供给机制设计"
+    ],
+    "boundaries": [
+      "事后归因不能证明普适因果，替代模式仍须验证。"
+    ],
+    "questions": [
+      "低价竞争是否牺牲不可观察质量？"
+    ],
+    "actions": [
+      "把方向、模式、执行分开复盘，测试品控与单位经济"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "WX-P14",
+    "person": "wang-xing",
+    "person_name": "王兴",
+    "kind": "principle",
+    "title": "行业深度决定供需匹配质量",
+    "summary": "撮合具体交易需要理解可用供给和场景，不只依赖泛化流量。",
+    "conditions": [
+      "本地交易平台与垂直行业"
+    ],
+    "boundaries": [
+      "深入并不意味着自己做全部供给；技术团队仍需行业伙伴"
+    ],
+    "questions": [
+      "决定成交的供给信息缺什么？"
+    ],
+    "actions": [
+      "走访供给方，构建时间、容量、质量等约束，再测试匹配"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P01",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "需求决定价值的落点",
+    "summary": "投入与质量本身不证明商业价值；先确认具体人的需求与买单理由。",
+    "conditions": [
+      "新产品立项或价值主张重做"
+    ],
+    "boundaries": [
+      "意义、社会价值不都等于可收费价值；别否定公益产品"
+    ],
+    "questions": [
+      "谁在何时为什么选择我们？",
+      "支付方和使用者是否相同？"
+    ],
+    "actions": [
+      "写使用场景与替代品",
+      "记录实际选择和交易证据"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P02",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "价值、共识、模式分别诊断",
+    "summary": "分别检查对方需要的价值、形成成交或协作关系的共识，以及自身可持续的模式；模式再拆成能力系统、变现逻辑和分配机制。",
+    "conditions": [
+      "产品卖不动或有规模无利润"
+    ],
+    "boundaries": [
+      "三者相互影响，不是机械单线阶段；不保证成功"
+    ],
+    "questions": [
+      "究竟哪一环证据最弱？"
+    ],
+    "actions": [
+      "分别列用户收益、成交障碍、单位经济",
+      "优先实验最不确定一环",
+      "分别写出能力短板、实际付款方与现金路径、资源和收益如何分配，再检查三者是否相互支持"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P03",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "用场景检验应然",
+    "summary": "逻辑上好看的产品方案必须在真实使用场景胜过替代方案。",
+    "conditions": [
+      "功能需求或价格方案评审"
+    ],
+    "boundaries": [
+      "情境模拟和个案不能代替实际选择验证。"
+    ],
+    "questions": [
+      "触发场景是什么？",
+      "用户会拿它与什么竞争方案比较？"
+    ],
+    "actions": [
+      "模拟完整使用与支付情境",
+      "验证替代品选择而非只问喜好",
+      "先穷举具体工作/生活场景，再比较出现频率、感知强度和替代方案；选择一个可验证的起步场景"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P04",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "身份表达需行为证据",
+    "summary": "弹性消费可能服务自我认同，仅人口标签不足以解释选择。",
+    "conditions": [
+      "服装、美妆、内容与体验产品"
+    ],
+    "boundaries": [
+      "不得按性别年龄固化人设，行为解释必须允许被推翻。",
+      "持续不购买也可能受预算或可及性限制，不能一律归因于不想要。"
+    ],
+    "questions": [
+      "用户想表达什么？",
+      "这种表达影响支付还是仅口头赞同？"
+    ],
+    "actions": [
+      "访谈最近一次真实购买",
+      "分群测试场景与表达"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P05",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "功能与情绪分开验收",
+    "summary": "分别检验任务效果、主观感受和可能的转售收益，避免把不同价值混为同一种溢价。",
+    "conditions": [
+      "商品差异化和溢价评估"
+    ],
+    "boundaries": [
+      "情绪包装不能代替质量与安全。",
+      "功能、感受和潜在资产收益是观察维度，不能直接相加计分。",
+      "潜在资产收益依赖交易渠道、配套与市场认可，不保证流动性或升值。",
+      "简化的心理解释不能代替专业的生理或医学判断。"
+    ],
+    "questions": [
+      "我们在改善效率还是感受？"
+    ],
+    "actions": [
+      "分别测完成率与选择偏好",
+      "对溢价做支付实验"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P06",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "先画利益相关人地图",
+    "summary": "B2B对接人友善不等于组织达成采购共识。",
+    "conditions": [
+      "企业销售与跨部门立项"
+    ],
+    "boundaries": [
+      "没成交也可能是预算、时机、产品问题，不能只归共识"
+    ],
+    "questions": [
+      "谁使用、付款、批准和承担风险？"
+    ],
+    "actions": [
+      "逐角色记录收益顾虑和审批条件",
+      "用可验证承诺代替关系猜测",
+      "按利益得失与影响力画角色地图；检查采购后的运营负责人和组织调整，避免只交软件和培训"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P07",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "审计系统的目标与反馈",
+    "summary": "指标会改变参与者行为，需检查反馈是否反噬长期价值。",
+    "conditions": [
+      "平台机制与激励设计"
+    ],
+    "boundaries": [
+      "对外部系统的机制推断须核验，不能仅凭表面现象下结论。",
+      "激励须尊重自主选择与可持续工作条件，不采用羞辱、过劳或强迫。"
+    ],
+    "questions": [
+      "如果大家极力优化此指标会发生什么？"
+    ],
+    "actions": [
+      "画激励反馈链",
+      "设置质量、信任或留存对照指标"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P08",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "区分增长脉冲与经营基本盘",
+    "summary": "传播爆发不等于持续竞争力，履约和供给才支撑长期经营。",
+    "conditions": [
+      "内容驱动电商或爆品增长"
+    ],
+    "boundaries": [
+      "早期热度不能预测长期命运，事后经营解释仍须独立核验。"
+    ],
+    "questions": [
+      "热度减半后是否仍可履约盈利？"
+    ],
+    "actions": [
+      "分开报告短期流量与复购质量",
+      "检验供应链容量及现金消耗"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P09",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "业务与时代的关系",
+    "summary": "基础设施改变会重写能力价值，应分清稳定需求和旧技术配套。",
+    "conditions": [
+      "AI转型或第二曲线判断"
+    ],
+    "boundaries": [
+      "不是所有旧业务都应放弃；需比较迁移成本与存续现金流"
+    ],
+    "questions": [
+      "什么会被新平台内置？",
+      "什么需求仍稳定？"
+    ],
+    "actions": [
+      "列技术依赖和替代风险",
+      "做可逆小规模迁移实验"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P10",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "规模要匹配体系能力",
+    "summary": "小范围用户洞察不足以支撑大规模供应、渠道与组织竞争。",
+    "conditions": [
+      "扩张硬件、零售或服务业务"
+    ],
+    "boundaries": [
+      "不能仅以资本多少决定胜负"
+    ],
+    "questions": [
+      "哪个交付环节在规模扩大时先失效？"
+    ],
+    "actions": [
+      "建立容量、品控、人才与现金约束表",
+      "按最短板设置扩张闸门",
+      "把扩张所需能力与不可击穿的现金、履约及安全边界分别写清"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P11",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "体验从预期开始",
+    "summary": "用户感受受到进入场景前的预期及解释影响。",
+    "conditions": [
+      "交互、承诺和交付体验评审"
+    ],
+    "boundaries": [
+      "不能靠压低预期掩盖糟糕产品"
+    ],
+    "questions": [
+      "界面暗示和实际行为是否一致？"
+    ],
+    "actions": [
+      "检查命名、提示和动作映射",
+      "让新用户复述预期后观察操作"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P12",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "把团队冲突转成可处理差距",
+    "summary": "能坦诚暴露差距并共同修正，是协作创新的条件。",
+    "conditions": [
+      "产品跨职能合作出现分歧"
+    ],
+    "boundaries": [
+      "不是要求接受伤害或放弃必要边界"
+    ],
+    "questions": [
+      "分歧是事实、目标还是资源？"
+    ],
+    "actions": [
+      "记录双方目标与证据",
+      "分配共同验证动作和复盘时间"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P13",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "独特供给需要可持续交换",
+    "summary": "供给差异要同时服务用户选择与组织生存。",
+    "conditions": [
+      "平台、渠道或商品组合选择"
+    ],
+    "boundaries": [
+      "独特不一定有需求；溢价不等于高利润"
+    ],
+    "questions": [
+      "为什么用户不选随处可得的替代品？"
+    ],
+    "actions": [
+      "核验差异可感知性",
+      "核算持续提供该差异的成本"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P14",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "扩张要给当地生态留下共存空间",
+    "summary": "评估进入新市场或扩大规模时，除效率与自身增长，还应检查受影响用户、合作方及外部成本，并寻找可以持续共存的安排。",
+    "conditions": [
+      "企业出海、进入新地区或扩张平台规则时，行动会改变现有用户和合作方的选择空间"
+    ],
+    "boundaries": [
+      "竞争、低价和扩张本身不等于伤害，具体得失须据实际证据判断。",
+      "共存安排不保证商业回报，不能用企业寿命证明道德或预言经营结果。"
+    ],
+    "questions": [
+      "这次扩张让谁受益、让谁承担未被计入的成本？",
+      "当地用户与合作方还保留哪些真实选择，如何反馈问题？"
+    ],
+    "actions": [
+      "把受影响群体、收益和成本列入进入新市场的决策简报，并标记缺少证据的部分。",
+      "设计可逆试点，观察用户选择、合作方履约及明确的负面影响，再决定是否扩张。"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P15",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "把产品特性翻译成用户属性",
+    "summary": "先检验功能对具体用户的影响：缺少就拒用、达到即够用、越多越好、带来惊喜，或反而增加负担。",
+    "conditions": [
+      "功能排序、卖点与承诺评审"
+    ],
+    "boundaries": [
+      "需求属性分类是可借用的分析工具，不是此顾问视角的独创理论。",
+      "同一特性会随人群与场景改变类别，不能仅凭团队判断固定分类。",
+      "感知设计不能掩盖无法交付的承诺，个案不能代替功效验证。"
+    ],
+    "questions": [
+      "用户最希望确定交付什么？",
+      "哪个昂贵特性对目标群体无感甚至扣分？"
+    ],
+    "actions": [
+      "按具体用户任务收集正反反应，标注分类证据",
+      "把承诺收敛到可验证交付，对额外惊喜单独观察"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P16",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "给试错和扩张设安全边界",
+    "summary": "新认知先作为假设求证；决定投入前，明确现金、责任和安全底线，避免一次失败耗尽继续验证的能力。",
+    "conditions": [
+      "新项目、扩张或大额投入"
+    ],
+    "boundaries": [
+      "安全边界过紧也可能压制创新，应说明保护对象与调整条件。",
+      "增加尝试次数不保证成功，也不能忽视单次失败的生存风险。"
+    ],
+    "questions": [
+      "最坏情形需要退还、赔付或持续履约多少资源？",
+      "什么失败可承受、什么必须停？"
+    ],
+    "actions": [
+      "把假设、试验预算、停止条件和保留现金分开记录",
+      "发生失败先定位可复核的缺口，再决定追加或退出"
+    ],
+    "status": "method_synthesis"
+  },
+  {
+    "id": "LN-P17",
+    "person": "liang-ning",
+    "person_name": "梁宁",
+    "kind": "principle",
+    "title": "分配机制服务真正创造价值的人",
+    "summary": "资源与奖赏应匹配企业所依赖的能力；执行标准化与创造新体验所需的授权、支持和激励不同。",
+    "conditions": [
+      "组织设计、关键岗位与创新激励"
+    ],
+    "boundaries": [
+      "具体待遇和考核须结合当前组织条件，不照搬其他公司的做法。",
+      "困难任务须配套资源与失败边界，使命感不能成为强迫超额劳动的理由。"
+    ],
+    "questions": [
+      "哪个岗位的创造真正改变用户交付？",
+      "分配奖励的是长期能力还是短期指标？"
+    ],
+    "actions": [
+      "将关键能力与资源、成长机会、回报逐项对应",
+      "为创新人才提供观察优秀实践和验证想法的时间与资源"
+    ],
+    "status": "method_synthesis"
+  }
+]

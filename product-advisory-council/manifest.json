@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "version": "2.1.0",
+  "method_count": 75,
+  "files": {
+    "product-advisory-council/SKILL.md": "3d8cfbe9a8d1728fe23f3fe9e9a41f00986a85a0b3e6036e0079d36f258f79a6",
+    "product-advisory-council/advisors/jobs/profile.md": "7def2922c734e5cb441a409ae2db70a118de566b537007f9c4a401ae3e797a91",
+    "product-advisory-council/advisors/liang-ning/profile.md": "fb606ab6d7c9924d62cd22af73d81bc039f3ead47e1daf6c4310b95e200dc045",
+    "product-advisory-council/advisors/wang-xing/profile.md": "ecf49231093df0cca8cc638104abe35503b233034ea346085225433c5d5c2ecd",
+    "product-advisory-council/advisors/yu-jun/profile.md": "06f697550d38836a6b234a2adbd9f24d5b6d4f3b523954534c144b102dc545e8",
+    "product-advisory-council/advisors/zhang-xiaolong/profile.md": "59ec1865eb8808282ed7fffdaa382ea0b4935e4009c607a6cdaf0c69e839089e",
+    "product-advisory-council/agents/openai.yaml": "fad27b9d7da619dc7955addab04b70c9cb1982dceabc09a732986adf19128f75",
+    "product-advisory-council/assets/avatars/council.png": "deb4c09962571ec48729a13ba8b847f6f8b9ebad711b393ce1bc6ee8aeee8954",
+    "product-advisory-council/assets/avatars/liang-ning.png": "37e0000d3f87c54361fced6b544998a2a2fe0a2d30f4a9fa987c9b8113817d2f",
+    "product-advisory-council/assets/avatars/steve-jobs.png": "ce0863567b70958398210adeaecb1182195058ff070dc20465d4070c0a498b48",
+    "product-advisory-council/assets/avatars/wang-xing.png": "8a5e37e510a28f0ef4d4ecccdda36c5699145b955bda0ed2f993f1409b494f59",
+    "product-advisory-council/assets/avatars/yu-jun.png": "20517924038d4b7b1262018c43286fc78b6496eecf6e1275e2ff0eae6c643e82",
+    "product-advisory-council/assets/avatars/zhang-xiaolong.png": "d8e4f0fe93cd791265bffbb9c9ae328118a994c64929ccc7da591e71654288ff",
+    "product-advisory-council/assets/chat-export.js": "6975fcc12f6aad4be922aa2634a79250cd2e8bc25df54732cc174ad605a1a38b",
+    "product-advisory-council/assets/chatroom.html": "79335dfe1fbbe8f9e20fc483747f55fafb1bbdabca3220045016beacd4983e5c",
+    "product-advisory-council/references/decision-brief.md": "07eb7e2c50062b1f67e8e47c5d533cd745b13310a49b2e739a5f55a4093bc63e",
+    "product-advisory-council/references/decision-report.md": "3a243d256dda8f63166a366cfff49c9fbc66b00103393cf3de0e296149e77ba4",
+    "product-advisory-council/references/discussion-depth.md": "cf5949308b13bfe87a8ccfff114123e8e31647737bdd16623b030ba47a8d796f",
+    "product-advisory-council/references/evaluation-status.md": "95acfd41303a4ed7e70684bc9330e6d9d11a8698d7f1dac27db27f1c7fe68004",
+    "product-advisory-council/references/group-chat.md": "d4c1542a4c4c107e50e77ec2c39e10ddf3d461a2bf77e19a63a9aa7818826256",
+    "product-advisory-council/references/methods.json": "7c6744adeb66eae2bcbf5e6fa484a11dd9abf331d6a8f9383310ff7ef29321c6",
+    "product-advisory-council/references/search-index.json": "7c6744adeb66eae2bcbf5e6fa484a11dd9abf331d6a8f9383310ff7ef29321c6",
+    "product-advisory-council/scripts/chatroom.py": "df079ad8e9938665025d1537142046c162310dd03658ff7f28aebfbf0fa463c9",
+    "product-advisory-council/scripts/search.py": "8e9d23221c703fee801f29323cbe21f779c2441dbd7fee19863d4a60062aadae"
+  }
+}
