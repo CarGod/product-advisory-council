@@ -107,7 +107,8 @@ def main():
         slugs = sorted({r["person"] for r in records if r.get("person")})
         names = {r["person_name"]: r["person"] for r in records
                  if r.get("person_name") and r.get("person")}
-        person = {"jobs": "steve-jobs"}.get(args.person, args.person)
+        from chatroom import ALIASES
+        person = ALIASES.get(args.person, ALIASES.get(args.person.lower(), args.person))
         person = names.get(person, person)
         if person not in slugs:
             parser.error(f"Unknown --person {args.person!r}. Valid slugs in this index: "

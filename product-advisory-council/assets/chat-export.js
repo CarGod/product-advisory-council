@@ -1,4 +1,4 @@
-/* Offline chat image export. Native browser APIs only; no network or dependencies. */
+/* Offline chat image/PDF export. Native browser APIs only; no network or dependencies. */
 (() => {
   'use strict';
   const WIDTH = 540, SCALE = 2, MAX_PIXELS = 16000000, MAX_PAGES = 80;
@@ -38,7 +38,7 @@
     return pages;
   }
 
-  if (typeof document === 'undefined') { module.exports = {planPages, zip}; return; }
+  if (typeof document === 'undefined') { module.exports = {planPages, zip, pdf}; return; }
   addEventListener('pagehide', clearURLs);
 
   async function snapshot() {
@@ -88,7 +88,7 @@
     } finally { stage.remove(); }
   }
 
-  async function raster(snapshot, page, outputHeight, index, count, split) {
+  async function raster(snapshot, page, outputHeight, index, count, split, mime = 'image/png') {
     const contentHeight = page.end-page.start;
     const head = split ? 22 : 0;
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${outputHeight}"><foreignObject x="0" y="${head}" width="${WIDTH}" height="${contentHeight}"><div xmlns="http://www.w3.org/1999/xhtml" style="width:${WIDTH}px;height:${contentHeight}px;overflow:hidden"><div style="transform:translateY(-${page.start}px)">${snapshot.markup}</div></div></foreignObject></svg>`;
@@ -102,8 +102,37 @@
       context.fillStyle = snapshot.background; context.fillRect(0,0,canvas.width,canvas.height);
       context.scale(SCALE,SCALE); context.drawImage(image,0,0);
       if(split) { context.fillStyle = snapshot.ink; context.globalAlpha = .65; context.font = '11px -apple-system, "PingFang SC", sans-serif'; context.fillText(`产品顾问团 · ${index+1} / ${count}${page.start ? ' · 接上页' : ''}`,20,15); context.fillText(index+1<count ? '下页继续 →' : '讨论记录 · AI 视角，非本人发言',20,outputHeight-12); }
-      return await new Promise((resolve,reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('图像编码失败，请选择智能分割。')), 'image/png'));
+      return await new Promise((resolve,reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('图像编码失败，请选择智能分割。')), mime, .95));
     } finally { canvas.width=1; canvas.height=1; }
+  }
+
+  // Minimal writer for PDF version 1.4: each page embeds an opaque JPEG of the browser
+  // layout. Byte offsets include binary streams; no fonts or remote libraries.
+  async function pdf(files) {
+    if (!files.length || files.length > MAX_PAGES) throw new Error('PDF 页数须为 1–80 页。');
+    const encoder = new TextEncoder(), parts = [], offsets = [0]; let size = 0;
+    const append = value => { const bytes = typeof value === 'string' ? encoder.encode(value) : value; parts.push(bytes); size += bytes.length; };
+    const object = (id, content) => { offsets[id] = size; append(`${id} 0 obj\n${content}\nendobj\n`); };
+    append('%PDF-1.4\n%'); append(new Uint8Array([226,227,207,211])); append('\n');
+    object(1, '<< /Type /Catalog /Pages 2 0 R >>');
+    object(2, `<< /Type /Pages /Count ${files.length} /Kids [${files.map((_,i) => `${3+i*3} 0 R`).join(' ')}] >>`);
+    for (let i=0; i<files.length; i++) {
+      const file = files[i], id = 3+i*3, bytes = new Uint8Array(await file.blob.arrayBuffer());
+      if (file.blob.type !== 'image/jpeg' || bytes[0] !== 255 || bytes[1] !== 216) throw new Error('PDF 页面必须为有效 JPEG 图像。');
+      if (!Number.isInteger(file.width) || !Number.isInteger(file.height) || file.width < 1 || file.height < 1) throw new Error('PDF 页面尺寸无效。');
+      const w = 595.28, h = +(w*file.height/file.width).toFixed(2);
+      object(id, `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${w} ${h}] /Resources << /XObject << /Im0 ${id+1} 0 R >> >> /Contents ${id+2} 0 R >>`);
+      offsets[id+1] = size;
+      append(`${id+1} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${file.width} /Height ${file.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${bytes.length} >>\nstream\n`);
+      append(bytes); append('\nendstream\nendobj\n');
+      const commands = `q\n${w} 0 0 ${h} 0 0 cm\n/Im0 Do\nQ\n`;
+      object(id+2, `<< /Length ${encoder.encode(commands).length} >>\nstream\n${commands}endstream`);
+    }
+    const start = size;
+    append(`xref\n0 ${offsets.length}\n0000000000 65535 f \n`);
+    for (let i=1; i<offsets.length; i++) append(`${String(offsets[i]).padStart(10,'0')} 00000 n \n`);
+    append(`trailer\n<< /Size ${offsets.length} /Root 1 0 R >>\nstartxref\n${start}\n%%EOF\n`);
+    return new Blob(parts,{type:'application/pdf'});
   }
 
   // Small store-only ZIP writer. PNG is already compressed; UTF-8 filenames.
@@ -129,14 +158,15 @@
     clearURLs();
     openSheet(sheet => {
       sheet.style.removeProperty('--hue');
-      sheet.setAttribute('aria-label','导出聊天图片');
-      sheet.append(el('h3','','导出聊天图片'),el('p','foot','保留头像、对话气泡、引用与决议卡。1080 像素高清 PNG，全部在本机生成。'));
+      sheet.setAttribute('aria-label','导出聊天记录');
+      sheet.append(el('h3','','导出聊天记录'),el('p','foot','保留头像、对话气泡、引用与决议卡。1080 像素高清图片或多页 PDF，全部在本机生成。PDF 保留聊天视觉样式，文字不可选中复制。'));
       const options=el('div','export-options');
       const modeLabel=el('label','','导出方式'), mode=el('select');mode.id='exportMode';
-      for(const [value,text] of [['long','单张长图'],['split','智能分割多张']]){const o=el('option','',text);o.value=value;mode.append(o);}modeLabel.append(mode);
-      const ratioLabel=el('label','','每张图片比例'), ratio=el('select');ratio.id='exportRatio';
+      for(const [value,text] of [['long','单张长图'],['split','智能分割多张'],['pdf','PDF 文档（智能分页）']]){const o=el('option','',text);o.value=value;mode.append(o);}modeLabel.append(mode);
+      const ratioLabel=el('label','','页面比例'), ratio=el('select');ratio.id='exportRatio';
       for(const [value,text] of [['16/9','9:16 · 常规手机'],['19.5/9','9:19.5 · 手机长屏'],['4/3','3:4 · 图文分享'],['5/4','4:5 · 信息流'],['1/1','1:1 · 正方形']]){const o=el('option','',text);o.value=value;ratio.append(o);}ratioLabel.append(ratio);ratioLabel.hidden=true;
-      mode.addEventListener('change',()=>{ratioLabel.hidden=mode.value!=='split';});options.append(modeLabel,ratioLabel);sheet.append(options);
+      const a4=el('option','','A4 · 文档');a4.value='297/210';a4.hidden=true;ratio.prepend(a4);
+      mode.addEventListener('change',()=>{ratioLabel.hidden=mode.value==='long';a4.hidden=mode.value!=='pdf';if(mode.value==='pdf')ratio.value=a4.value;else if(ratio.value===a4.value)ratio.value='16/9';});options.append(modeLabel,ratioLabel);sheet.append(options);
       sheet.append(el('p','foot','智能分割优先保留整条消息；超长内容在文字行间续接。每张保持所选比例，必要时留白。导出的是当前已显示的消息。'));
       const action=el('button','send','生成预览');action.id='exportGenerate';action.type='button';
       const status=el('p','export-status');status.id='exportStatus';status.setAttribute('role','status');
@@ -147,23 +177,24 @@
         if(draining || queue.length) { status.textContent='正在回放或接收消息，请等待对话显示完整后再导出。'; return; }
         busy=true;action.disabled=true;mode.disabled=true;ratio.disabled=true;clearURLs();results.textContent='';downloads.textContent='';status.textContent='正在准备聊天内容…';
         try{
-          const snap=await snapshot(), split=mode.value==='split';
+          const snap=await snapshot(), isPDF=mode.value==='pdf', split=mode.value!=='long';
           const [h,w]=ratio.value.split('/').map(Number), target=Math.round(WIDTH*h/w);
           if(!split && (WIDTH*SCALE*Math.ceil(snap.height*SCALE)>MAX_PIXELS || snap.height*SCALE>16384))throw new Error('内容过长，单张会超过浏览器安全尺寸。请选择“智能分割多张”。');
           const pages=split?planPages(snap.height,target-52,snap.boundaries,snap.safeGaps):[{start:0,end:snap.height}];
           const files=[];let totalBytes=0;
           for(let i=0;i<pages.length;i++){
             status.textContent=`正在生成 ${i+1} / ${pages.length} 张…`;await tick();
-            const outputHeight=split?target:snap.height, blob=await raster(snap,pages[i],outputHeight,i,pages.length,split);
+            const outputHeight=split?target:snap.height, blob=await raster(snap,pages[i],outputHeight,i,pages.length,split,isPDF?'image/jpeg':'image/png');
             totalBytes+=blob.size;if(totalBytes>150*1024*1024)throw new Error('图片总量超过 150 MB，请缩小讨论范围后重试。');
-            const name=`${filename()}-${String(i+1).padStart(2,'0')}.png`, url=objectURL(blob);files.push({name,blob});
+            const name=`${filename()}-${String(i+1).padStart(2,'0')}.${isPDF?'jpg':'png'}`, url=objectURL(blob);files.push({name,blob,width:WIDTH*SCALE,height:Math.round(outputHeight*SCALE)});
             const figure=el('figure','export-preview'), img=el('img');img.src=url;img.alt=`聊天图片 ${i+1}，共 ${pages.length} 张`;img.loading='lazy';
-            const caption=el('figcaption'), download=el('button','barbtn','下载 PNG');download.type='button';download.addEventListener('click',()=>save(url,name));
+            const caption=el('figcaption'), download=el('button','barbtn',isPDF?'下载此页 JPG':'下载 PNG');download.type='button';download.addEventListener('click',()=>save(url,name));
             caption.append(el('span','',`${i+1} / ${pages.length} · 1080 × ${Math.round(outputHeight*SCALE)}`),download);figure.append(img,caption);results.append(figure);
           }
-          if(files.length>1){const archive=objectURL(await zip(files)), download=el('button','barbtn','整包下载 ZIP');download.id='exportZip';download.addEventListener('click',()=>save(archive,filename()+'-聊天图片.zip'));downloads.append(download);}
-          status.textContent=`已生成 ${files.length} 张。可分别下载${files.length>1?'，也可整包下载后解压':''}；手机也可长按预览保存。`;
-        }catch(error){status.textContent='导出未完成：'+error.message;}finally{busy=false;action.disabled=false;mode.disabled=false;ratio.disabled=false;}
+          if(isPDF){status.textContent='正在封装 PDF…';await tick();const documentURL=objectURL(await pdf(files)), download=el('button','barbtn','下载 PDF');download.id='exportPdf';download.addEventListener('click',()=>save(documentURL,filename()+'-聊天记录.pdf'));downloads.append(download);}
+          else if(files.length>1){const archive=objectURL(await zip(files)), download=el('button','barbtn','整包下载 ZIP');download.id='exportZip';download.addEventListener('click',()=>save(archive,filename()+'-聊天图片.zip'));downloads.append(download);}
+          status.textContent=isPDF?`已生成 ${files.length} 页 PDF。点击“下载 PDF”保存完整文档；以下为逐页预览。`:`已生成 ${files.length} 张。可分别下载${files.length>1?'，也可整包下载后解压':''}；手机也可长按预览保存。`;
+        }catch(error){clearURLs();results.textContent='';downloads.textContent='';status.textContent='导出未完成：'+error.message;}finally{busy=false;action.disabled=false;mode.disabled=false;ratio.disabled=false;}
       });
     });
   });

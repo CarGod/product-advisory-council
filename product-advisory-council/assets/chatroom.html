@@ -80,6 +80,8 @@ a{color:inherit}
 .chip .cid,.inline-id{font:600 11.5px/1.6 var(--mono);color:color-mix(in srgb,var(--hue,var(--ink-2)) 85%,var(--ink))}
 .chip .ct{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .inline-id{padding:0 4px;border-radius:4px;background:color-mix(in srgb,var(--ink) 7%,transparent)}
+button.inline-id{display:inline;text-align:left;white-space:normal;overflow-wrap:anywhere;cursor:pointer}
+button.inline-id:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 button.inline-id:hover{background:color-mix(in srgb,var(--ink) 14%,transparent)}
 .at{font-weight:600;color:color-mix(in srgb,var(--athue,var(--seal)) 85%,var(--ink))}
 .basis{font-size:11.5px;color:var(--ink-3)}
@@ -133,22 +135,23 @@ button.inline-id:hover{background:color-mix(in srgb,var(--ink) 14%,transparent)}
 .streamwrap{grid-column:1;grid-row:3;position:relative;min-height:0;display:grid;grid-template-rows:minmax(0,1fr);grid-template-columns:minmax(0,1fr)}
 .streamwrap .stream{grid-column:1;grid-row:1}
 
-.side{grid-column:2;grid-row:3/5;border-left:1px solid var(--line);background:var(--surface);overflow-y:auto;padding:16px}
+.side{grid-column:2;grid-row:3/5;min-width:0;overflow-x:hidden;border-left:1px solid var(--line);background:var(--surface);overflow-y:auto;padding:16px}
 .side h2{margin:0 0 10px;font:600 12.5px/1 var(--sans);letter-spacing:.08em;color:var(--ink-3)}
 .side section+section{margin-top:22px}
 .sideclose{display:none;float:right;margin:-4px 0 6px}
-.member{display:flex;gap:10px;align-items:center;width:100%;padding:8px;border-radius:12px}
+.member{display:flex;min-width:0;max-width:100%;gap:10px;align-items:center;width:100%;padding:8px;border-radius:12px}
 .member:hover{background:var(--surface-2)}
 .member .face{width:38px;height:38px;box-shadow:0 0 0 2px var(--surface),0 0 0 3.5px var(--hue)}
 .member .who{min-width:0;flex:1}
-.member .who div:first-child{display:flex;gap:6px;align-items:center;font-weight:600;font-size:13.5px}
+.member .who div:first-child{display:flex;flex-wrap:wrap;min-width:0;gap:6px;align-items:center;font-weight:600;font-size:13.5px}
 .member .lens{font-size:12px;color:var(--ink-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .member .count{font:11.5px var(--mono);color:var(--ink-3);flex:none}
 .member.silent{opacity:.62}
-.cardlist{display:grid;gap:4px}
-.cardlist button{display:flex;gap:8px;align-items:baseline;padding:5px 8px;border-radius:8px;font-size:12.5px;color:var(--ink-2);width:100%}
+.cardlist{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:4px}
+.cardlist button{display:flex;min-width:0;max-width:100%;gap:8px;align-items:baseline;padding:5px 8px;border-radius:8px;font-size:12.5px;color:var(--ink-2);width:100%}
 .cardlist button:hover{background:var(--surface-2);color:var(--ink)}
-.cardlist .ct{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cardlist .inline-id{flex:0 0 auto;white-space:nowrap}
+.cardlist .ct{flex:1 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .empty{font-size:12.5px;color:var(--ink-3)}
 
 .composer{grid-column:1;grid-row:4;border-top:1px solid var(--line);background:var(--surface);padding:10px 20px calc(12px + env(safe-area-inset-bottom))}
@@ -243,7 +246,7 @@ button.inline-id:hover{background:color-mix(in srgb,var(--ink) 14%,transparent)}
       <button class="depth-badge" id="depthBadge" type="button" aria-label="讨论深度说明"></button>
     </div>
     <span class="stack" id="stack"></span>
-    <button class="barbtn" id="exportBtn">导出长图</button>
+    <button class="barbtn" id="exportBtn">导出长图 / PDF</button>
     <button class="barbtn" id="replayBtn" hidden>回放</button>
     <button class="barbtn" id="membersBtn" aria-controls="side">成员</button>
   </header>
@@ -280,10 +283,12 @@ const LIVE = /*__LIVE__*/null;
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
 const seats = new Map((DATA ? DATA.seats : []).map((s) => [s.slug, s]));
+const roster = new Map((DATA ? (DATA.roster || DATA.seats) : []).map((s) => [s.slug, s]));
 const byId = new Map();
 const cards = DATA ? DATA.cards : {};
-const ID_RE = /(?:SJ|YJ|ZXL|WX|LN)-[A-Z]?\d{2,3}/;
-const TOKEN_RE = new RegExp("(\\*\\*[^*\\n]+\\*\\*)|(" + ID_RE.source + ")|(@(?:所有人|大家|全体|" + [...seats.values()].map((s) => s.name + "(?:视角)?").join("|") + "))", "g");
+const ID_RE = /(?<![A-Za-z0-9_-])(?:SJ|YJ|ZXL|WX|LN|SA|DA|EM|AN|AK|ETM|KW|MK|BC)-[A-Z]?\d{2,3}(?![A-Za-z0-9_-])/;
+const escapeRegex = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const MENTION_RE = new RegExp("@(?:" + ["所有人", "大家", "全体", ...[...roster.values()].map((s) => escapeRegex(s.name) + "(?:视角)?")].join("|") + ")");
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let lastId = 0, lastDay = "", replyTo = null, queue = [], draining = false, presence = "offline", failures = 0, unseen = 0, seenId = 0;
 
@@ -293,8 +298,8 @@ function face(slug, cls, plain) {
   if (src) { const img = el("img"); img.src = src; img.alt = ""; f.appendChild(img); }
   return f;
 }
-function who(slug) { return slug === "host" ? "主持人" : slug === "user" ? "你" : (seats.get(slug) || {name: slug}).name; }
-function hue(slug) { const s = seats.get(slug); return s ? s.color : ""; }
+function who(slug) { return slug === "host" ? "主持人" : slug === "user" ? "你" : (seats.get(slug) || roster.get(slug) || {name: slug}).name; }
+function hue(slug) { const s = seats.get(slug) || roster.get(slug); return s ? s.color : ""; }
 function hhmm(at) { const m = /T(\d\d:\d\d)/.exec(at || ""); return m ? m[1] : ""; }
 function day(at) {
   const d = new Date(at); if (isNaN(d)) return "";
@@ -302,26 +307,45 @@ function day(at) {
 }
 function snippet(text, n) { const t = text.replace(/\s+/g, " "); return t.length > n ? t.slice(0, n) + "…" : t; }
 
+// Build text nodes, never rewrite serialized HTML: titles and user text stay inert.
+function appendInline(parent, text, formatted = true) {
+  const token = new RegExp((formatted ? "(\\*\\*[^*\\n]+\\*\\*|`[^`\\n]+`)|" : "((?!))|") + "(" + ID_RE.source + ")|(" + MENTION_RE.source + ")", "g");
+  let at = 0, match;
+  while ((match = token.exec(text))) {
+    if (match.index > at) parent.appendChild(document.createTextNode(text.slice(at, match.index)));
+    let end = match.index + match[0].length;
+    if (match[1]) {
+      const bold = match[1].startsWith("**"), node = el(bold ? "strong" : "code");
+      appendInline(node, match[1].slice(bold ? 2 : 1, bold ? -2 : -1), false);
+      parent.appendChild(node);
+    } else if (match[2]) {
+      const id = match[2], card = cards[id];
+      if (card) {
+        const title = typeof card.title === "string" ? card.title.trim() : "";
+        const button = el("button", "inline-id", id + (title ? " " + title : ""));
+        button.type = "button";
+        button.dataset.cardId = id;
+        button.setAttribute("aria-label", "查看方法卡：" + button.textContent);
+        button.addEventListener("click", () => openCard(id));
+        parent.appendChild(button);
+        // Older messages sometimes already spell out the title after the ID.
+        const tail = text.slice(end), spacing = /^\s*/.exec(tail)[0];
+        if (title && tail.slice(spacing.length).startsWith(title)) end += spacing.length + title.length;
+      } else parent.appendChild(el("span", "inline-id", id));
+    } else {
+      const span = el("span", "at", match[3]);
+      const target = [...roster.values()].find((s) => match[3].slice(1).startsWith(s.name));
+      if (target) span.style.setProperty("--athue", target.color);
+      parent.appendChild(span);
+    }
+    at = end; token.lastIndex = end;
+  }
+  if (at < text.length) parent.appendChild(document.createTextNode(text.slice(at)));
+}
 function rich(text, speaker) {
   const frag = document.createDocumentFragment();
   for (const para of text.split(/\n+/)) {
-    const p = el("p"); let at = 0; TOKEN_RE.lastIndex = 0; let m;
-    while ((m = TOKEN_RE.exec(para))) {
-      if (m.index > at) p.appendChild(document.createTextNode(para.slice(at, m.index)));
-      if (m[1]) p.appendChild(el("strong", "", m[1].slice(2, -2)));
-      else if (m[2]) {
-        if (cards[m[2]] && speaker !== "user") { const b = el("button", "inline-id", m[2]); b.type = "button"; b.addEventListener("click", () => openCard(m[2])); p.appendChild(b); }
-        else p.appendChild(el("span", "inline-id", m[2]));
-      } else {
-        const span = el("span", "at", m[3]);
-        const target = [...seats.values()].find((s) => m[3].slice(1).startsWith(s.name));
-        if (target) span.style.setProperty("--athue", target.color);
-        p.appendChild(span);
-      }
-      at = m.index + m[0].length;
-    }
-    if (at < para.length) p.appendChild(document.createTextNode(para.slice(at)));
-    frag.appendChild(p);
+    const p = el("p"); appendInline(p, para); frag.appendChild(p);
   }
   return frag;
 }
@@ -489,13 +513,23 @@ function refreshSide() {
     b.appendChild(el("span", "count", counts.get(s.slug) ? `${counts.get(s.slug)}条·${(used.get(s.slug) || new Set()).size}卡` : passed.has(s.slug) ? "本题未覆盖" : "未发言"));
     b.addEventListener("click", () => openProfile(s.slug)); members.appendChild(b);
   }
+  const historical = new Set([...byId.values()].map((m) => m.from).filter((slug) => roster.has(slug) && !seats.has(slug)));
+  if (historical.size) {
+    members.appendChild(el("div", "empty", "历史参与 · 当前未入席"));
+    for (const slug of historical) {
+      const b = el("button", "member silent"); b.type = "button";
+      b.appendChild(face(slug)); b.appendChild(el("span", "", who(slug)));
+      b.appendChild(el("span", "count", "历史发言保留"));
+      b.addEventListener("click", () => openProfile(slug)); members.appendChild(b);
+    }
+  }
   const list = $("cardlist"); list.textContent = "";
   const cited = new Set(); for (const m of byId.values()) { for (const c of m.cards || []) cited.add(c); (m.text.match(new RegExp(ID_RE.source, "g")) || []).forEach((c) => { if (cards[c] && m.from !== "user") cited.add(c); }); }
   if (!cited.size) list.appendChild(el("div", "empty", "还没有使用方法卡。"));
   for (const id of [...cited].sort()) {
     const c = cards[id]; if (!c) continue;
     const b = el("button"); b.type = "button"; b.style.setProperty("--hue", hue(c.person));
-    b.appendChild(el("span", "inline-id", id)); b.appendChild(el("span", "ct", c.title || "")); b.addEventListener("click", () => openCard(id)); list.appendChild(b);
+    b.title = id + " " + (c.title || ""); b.appendChild(el("span", "inline-id", id)); b.appendChild(el("span", "ct", c.title || "")); b.addEventListener("click", () => openCard(id)); list.appendChild(b);
   }
   const sub = $("sub"); sub.textContent = "";
   sub.appendChild(el("span", "", DATA.chat.mode === "direct" ? "单聊" : `${seats.size} 位顾问视角`));
@@ -536,7 +570,7 @@ function openCard(id) {
   });
 }
 function openProfile(slug) {
-  const s = seats.get(slug); if (!s) return;
+  const s = seats.get(slug) || roster.get(slug); if (!s) return;
   openSheet((sheet) => {
     sheet.style.setProperty("--hue", s.color);
     const box = el("div", "profile"); box.appendChild(face(slug, "", true));
@@ -547,7 +581,7 @@ function openProfile(slug) {
     sheet.appendChild(el("h4", "", "在本群"));
     sheet.appendChild(el("div", "", mine.length ? `发言 ${mine.filter((m) => m.kind !== "pass").length} 条，引用 ${used.size} 张方法卡。` : "还没有发言。"));
     if (used.size) { const list = el("div", "cardlist"); list.style.marginTop = "8px";
-      for (const id of [...used].sort()) { const b = el("button"); b.type = "button"; b.appendChild(el("span", "inline-id", id)); b.appendChild(el("span", "ct", (cards[id] || {}).title || "")); b.addEventListener("click", () => openCard(id)); list.appendChild(b); }
+      for (const id of [...used].sort()) { const b = el("button"); b.type = "button"; b.title = id + " " + ((cards[id] || {}).title || ""); b.appendChild(el("span", "inline-id", id)); b.appendChild(el("span", "ct", (cards[id] || {}).title || "")); b.addEventListener("click", () => openCard(id)); list.appendChild(b); }
       sheet.appendChild(list); }
     if (LIVE) { const at = el("button", "barbtn", "@" + s.name + " 问一句"); at.type = "button"; at.style.marginTop = "16px";
       at.addEventListener("click", () => { closeSheet(); insertMention(s.name); }); sheet.appendChild(at); }
@@ -584,10 +618,14 @@ function insertMention(name) {
 function grow() { input.style.height = "auto"; const h = input.scrollHeight + 2; input.style.height = Math.min(160, h) + "px"; input.style.overflowY = h > 160 ? "auto" : "hidden"; $("send").disabled = sending || !input.value.trim(); }
 let menuIndex = 0;
 function hideMenu() { $("menu").hidden = true; }
+function mentionAllowed(slug) {
+  const policy = DATA.participation || {};
+  return !(policy.excluded || []).includes(slug) && (!(policy.only || []).length || policy.only.includes(slug));
+}
 function showMenu(filter) {
   const menu = $("menu"); menu.textContent = "";
-  const options = [...seats.values()].filter((s) => s.name.startsWith(filter)).map((s) => ({label: s.name, slug: s.slug, note: s.lens}));
-  if ("所有人".startsWith(filter) && seats.size > 1) options.push({label: "所有人", slug: "council", note: "请每位相关的顾问都说一句"});
+  const options = [...roster.values()].filter((s) => mentionAllowed(s.slug) && s.name.startsWith(filter)).map((s) => ({label: s.name, slug: s.slug, note: (seats.has(s.slug) ? "已参与 · " : "可请求加入 · ") + s.lens}));
+  if ("所有人".startsWith(filter) && seats.size > 1) options.push({label: "所有人", slug: "council", note: "向当前相关席位提问，无关席位保持安静"});
   if (!options.length) return hideMenu();
   menuIndex = Math.min(menuIndex, options.length - 1);
   options.forEach((o, i) => { const b = el("button"); b.type = "button"; b.setAttribute("role", "option"); b.setAttribute("aria-selected", i === menuIndex ? "true" : "false");
@@ -644,13 +682,34 @@ function openDepth() {
     if (DATA.chat.depth_history.length) sheet.appendChild(el("p", "", "深度变更已保存在群聊系统消息中。"));
   });
 }
+function updateSeats(info) {
+  DATA.participation = info.participation || {};
+  if (!Array.isArray(info.seats)) return;
+  Object.assign(DATA.avatars, info.avatars || {});
+  if (JSON.stringify(DATA.seats) === JSON.stringify(info.seats) && DATA.chat.mode === info.mode) return;
+  DATA.seats = info.seats;
+  DATA.chat.mode = info.mode || (info.seats.length === 1 ? "direct" : "group");
+  seats.clear();
+  for (const s of info.seats) { seats.set(s.slug, s); roster.set(s.slug, s); }
+  const label = DATA.chat.mode === "direct" && seats.size ? [...seats.values()][0].name + "视角" : "产品顾问团";
+  document.title = label + " · " + DATA.chat.topic;
+  $("title").textContent = label + " · " + DATA.chat.topic;
+  $("groupFace").textContent = "";
+  $("groupFace").appendChild(face(DATA.chat.mode === "direct" && seats.size ? [...seats.keys()][0] : "council"));
+  $("groupFace").style.borderRadius = DATA.chat.mode === "direct" ? "50%" : "";
+  $("stack").textContent = "";
+  for (const s of seats.values()) { const f = face(s.slug); f.title = s.name + "视角"; $("stack").appendChild(f); }
+  refreshSide();
+}
 async function poll() {
   try {
     const res = await fetch(`/api/chat?since=${seenId}`, {headers: {"X-Room-Token": LIVE.token}});
     if (!res.ok) throw new Error(res.status);
     const body = await res.json(); failures = 0;
     Object.assign(cards, body.cards || {});
+    updateSeats(body);
     updateDepth(body);
+    if (!$("menu").hidden) { const match = /@([^\s@]*)$/.exec(input.value.slice(0, input.selectionStart)); if (match) showMenu(match[1]); else hideMenu(); }
     for (const m of body.messages) if (m.id > seenId) { seenId = m.id; queue.push(m); }  // seenId, not lastId: a message being "typed" is in neither list
     if (presence !== body.presence) { presence = body.presence; refreshSide(); }
     if (queue.length) drain(); else updateStatus();
