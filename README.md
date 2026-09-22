@@ -1,3 +1,5 @@
+[简体中文](README.md) · [English](README.en.md)
+
 <p align="center"><img src="product-advisory-council/assets/avatars/council.png" width="112" alt="产品顾问团示意头像"></p>
 
 # 产品顾问团 · Product Advisory Council
@@ -9,6 +11,34 @@
 这里的顾问是 AI 运用整理后方法形成的分析视角，不是本人，不代表本人认可，也不保证真人顾问等效或商业结果。
 
 [下载 v2.2.2 安装包](https://github.com/CarGod/product-advisory-council/releases/tag/v2.2.2) · [技能入口](product-advisory-council/SKILL.md) · [群聊与导出说明](product-advisory-council/references/group-chat.md)
+
+## 先看看：一个问题，换 14 个角度想
+
+**[打开产品介绍与互动演示 →](https://luffyliu.com/product-advisory-council/)**
+
+点击专家头像，看看不同方法如何分析一个具体问题。每位顾问都有 **4 组示例问答**，共 **56 组**；点击回答下的「方法线索」，进入可翻转的方法卡片，查看适用条件、思考问题、行动建议与方法边界。
+
+[![产品顾问团：14 位顾问头像墙与示例问答](docs/images/council-wall.png)](https://luffyliu.com/product-advisory-council/#meet)
+
+| 卡片正面：记住一个方法 | 翻到背面：知道怎么使用 |
+| --- | --- |
+| [![聚焦投入方法卡正面：头像、顾问名字与方法名称](docs/images/method-front.png)](https://luffyliu.com/product-advisory-council/cards/sj-p01/) | [![聚焦投入方法卡背面：适用条件、问题、行动与边界](docs/images/method-back.png)](https://luffyliu.com/product-advisory-council/cards/sj-p01/) |
+
+网页中的问答是预先编写的 AI 分析示例，不是实时聊天或本人回答。网页目前为简体中文；本仓库提供中英文介绍。
+
+## 复制给你的 Agent，让它帮你安装
+
+把下面这段话发送给 **Claude / Codex / Cursor / Workbuddy 等 Agent**。它会按当前客户端与环境支持的方式尝试安装；如果不能直接安装，应给出手动步骤。
+
+```text
+请帮我安装「产品顾问团」Skill，让我可以在当前 Agent 中使用这套专家顾问团队。
+
+公开仓库：https://github.com/CarGod/product-advisory-council
+
+请先阅读仓库 README 和安装说明，识别你当前所在的客户端及其支持的技能安装方式，再完成安装。保留完整的 product-advisory-council 技能文件夹，不要只复制 SKILL.md；如果已有旧版本，请先备份再更新。
+
+安装后检查技能文件是否完整、当前客户端是否能识别，并告诉我如何开始使用，以及是否需要新开会话。如果当前环境无法直接安装，请明确说明原因，并给出适合当前客户端的最少手动步骤，不要声称已经安装成功。
+```
 
 ## 可以帮你讨论什么
 
