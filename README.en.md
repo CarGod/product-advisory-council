@@ -12,19 +12,19 @@ An AI skill for exploring product decisions through selected product and AI pers
 
 These advisors are AI analytical perspectives based on curated methods, not the actual people. They do not imply endorsement, equivalent access to a human advisor, or guaranteed business results.
 
-[Explore the interactive showcase](https://luffyliu.com/product-advisory-council/) · [Download v2.2.2](https://github.com/CarGod/product-advisory-council/releases/tag/v2.2.2) · [Skill entry point](product-advisory-council/SKILL.md)
+[Explore the interactive showcase](https://luffyliu.com/en/product-advisory-council/) · [Download v2.2.2](https://github.com/CarGod/product-advisory-council/releases/tag/v2.2.2) · [Skill entry point](product-advisory-council/SKILL.md)
 
 ## See how the perspectives work
 
 Choose an avatar to explore **four example questions and answers per advisor — 56 in total**. Follow a method link to a flip card: the front names the method; the back explains when to use it, what to ask, what to do, and where it stops applying.
 
-[![The advisor wall and a sample product discussion](docs/images/council-wall.png)](https://luffyliu.com/product-advisory-council/#meet)
+[![The advisor wall and a sample product discussion](docs/images/council-wall-en.png)](https://luffyliu.com/en/product-advisory-council/#meet)
 
 | Front: remember the method | Back: put it to work |
 | --- | --- |
-| [![Focus investment: advisor avatar and method title](docs/images/method-front.png)](https://luffyliu.com/product-advisory-council/cards/sj-p01/) | [![Method details: conditions, questions, actions and boundaries](docs/images/method-back.png)](https://luffyliu.com/product-advisory-council/cards/sj-p01/) |
+| [![Focus investment: advisor avatar and method title](docs/images/method-front-en.png)](https://luffyliu.com/en/product-advisory-council/cards/sj-p01/) | [![Method details: conditions, questions, actions and boundaries](docs/images/method-back-en.png)](https://luffyliu.com/en/product-advisory-council/cards/sj-p01/) |
 
-The website and screenshots are currently in Simplified Chinese. The showcase uses prewritten AI analysis examples, not live chat or statements by the people represented. This repository provides Chinese and English introductions; the skill's method materials are primarily Chinese.
+The website supports Simplified Chinese, Traditional Chinese, English, Japanese, Korean and Spanish, including Q&As, method cards and Agent installation prompts. The screenshots below show the English UI. The showcase uses prewritten AI analysis examples, not live chat or statements by the people represented. This repository provides Chinese and English introductions; the skill's method materials are primarily Chinese.
 
 ## Ask your Agent to install it
 

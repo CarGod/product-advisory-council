@@ -24,7 +24,7 @@
 | --- | --- |
 | [![聚焦投入方法卡正面：头像、顾问名字与方法名称](docs/images/method-front.png)](https://luffyliu.com/product-advisory-council/cards/sj-p01/) | [![聚焦投入方法卡背面：适用条件、问题、行动与边界](docs/images/method-back.png)](https://luffyliu.com/product-advisory-council/cards/sj-p01/) |
 
-网页中的问答是预先编写的 AI 分析示例，不是实时聊天或本人回答。网页目前为简体中文；本仓库提供中英文介绍。
+网页中的问答是预先编写的 AI 分析示例，不是实时聊天或本人回答。网页支持简体中文、繁體中文、English、日本語、한국어和 Español，涵盖问答、方法卡与 Agent 安装指令；本仓库提供中英文介绍。
 
 ## 复制给你的 Agent，让它帮你安装
 
