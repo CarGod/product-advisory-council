@@ -6,13 +6,19 @@
 
 把一个产品问题，交给按问题选择的产品与AI分析视角讨论，形成可执行、可验证的决策建议。
 
-**一个技能文件夹，14位顾问模块，148 张决策方法卡。** 可以单独请某个视角分析，也可以组织专家团，在带头像的群聊网页里讨论，并导出适合分享的长图或分图。
+**一个技能文件夹，18位顾问模块，255 张决策方法卡。** 可以单独请某个视角分析，也可以组织专家团，在带头像的群聊网页里讨论，并导出适合分享的长图或分图。
 
 这里的顾问是 AI 运用整理后方法形成的分析视角，不是本人，不代表本人认可，也不保证真人顾问等效或商业结果。
 
-[下载 v2.2.2 安装包](https://github.com/CarGod/product-advisory-council/releases/tag/v2.2.2) · [技能入口](product-advisory-council/SKILL.md) · [群聊与导出说明](product-advisory-council/references/group-chat.md)
+[下载 v2.3.1 安装包](https://github.com/CarGod/product-advisory-council/releases/tag/v2.3.1) · [技能入口](product-advisory-council/SKILL.md) · [群聊与导出说明](product-advisory-council/references/group-chat.md)
 
-## 先看看：一个问题，换 14 个角度想
+## 先看看：18 个视角，形成可验证的下一步
+
+![18位顾问与255张方法卡的功能示意](docs/images/council-overview.png)
+
+![从问题简报到反证和验证计划的讨论流程](docs/images/decision-flow.png)
+
+下面保留的是既有网站演示截图（14视角展示版）；它与本次18视角技能包分别更新。新图为技能功能示意，不是已上线网站截图。
 
 **[打开产品介绍与互动演示 →](https://luffyliu.com/product-advisory-council/)**
 
@@ -51,7 +57,7 @@
 
 讨论从同一份业务简报出发，区分事实、假设与未知。最后给出建议、替代方案、关键分歧、最强反例及下一步实验，不按名人票数决定，也不强求所有视角达成一致。
 
-## 14个分析视角
+## 18个分析视角
 
 以下是本工具整理的关注方向，并非人物观点的完整概括。
 
@@ -71,10 +77,14 @@
 | 凯文·韦尔 | 用户问题、原型与AI产品工作流 |
 | 迈克·克里格 | 功能聚焦、反馈、团队与代理产品 |
 | 鲍里斯·切尔尼 | 工具验证、迭代与协作反馈 |
+| 查理·芒格 | 激励、反向检查、多因素误判与能力边界 |
+| 沃伦·巴菲特 | 资源配置、经营质量、长期成本与风险 |
+| 蒂姆·库克 | 执行协同、供应链、责任与价值取舍 |
+| 比尔·盖茨 | 学习反馈、软件交付、平台依赖与持续供给 |
 
 ## 安装一次即可
 
-1. 在 [Releases](https://github.com/CarGod/product-advisory-council/releases) 下载 `product-advisors-public-v2.2.2.zip`。
+1. 在 [Releases](https://github.com/CarGod/product-advisory-council/releases) 下载 `product-advisors-public-v2.3.1.zip`。
 2. 解压后保留完整的 `product-advisory-council/` 文件夹；不要只复制 `SKILL.md`，也不需要分别安装每个人。
 3. 将该文件夹放入你的 AI 客户端支持的技能目录，或通过客户端技能安装入口导入完整技能包。客户端的具体支持与安装入口以其自身说明为准。
 
@@ -112,7 +122,7 @@
 
 ## 按需参与
 
-不要求14位每次全部发言。可以指定必须参与、排除某人或仅允许几位参与；主持人根据问题选择视角，并在需要时补充参与者，保留加入原因和历史发言。明确的排除与“仅限”约束不会被自动邀请覆盖。
+不要求18位每次全部发言。可以指定必须参与、排除某人或仅允许几位参与；主持人根据问题选择视角，并在需要时补充参与者，保留加入原因和历史发言。明确的排除与“仅限”约束不会被自动邀请覆盖。
 
 > 这次必须请Dario和吴恩达参与，不请马斯克；其他视角按需要补充。
 
@@ -158,7 +168,7 @@
 ```text
 product-advisory-council/
 ├── SKILL.md                 # 统一入口与单人／团队路由
-├── advisors/                # 14个人物分析模块
+├── advisors/                # 18个人物分析模块
 ├── references/              # 方法卡、讨论协议、简报与报告模板
 ├── scripts/                 # 统一检索与本地群聊运行时
 ├── assets/                  # 示意头像、网页与图片导出
@@ -173,4 +183,4 @@ python3 scripts/search.py '用户价值 定价' --person yu-jun --limit 6
 python3 scripts/chatroom.py --help
 ```
 
-本次发布为 **v2.2.2 产品与AI顾问扩展版**。功能验证覆盖方法检索、人物筛选、聊天记录与渲染、讨论档位、图片分页及私有卡片快照隔离；这些检查不代表决策准确率或经营效果评测。详见[功能与效果边界](product-advisory-council/references/evaluation-status.md)。
+本次发布为 **v2.3.1 · 18位顾问与255张方法卡**，新增四位顾问模块和对应示意头像，并更新原有方法的适用边界。功能验证覆盖方法检索、人物筛选、聊天记录与渲染、讨论档位、图片分页及私有卡片快照隔离；这些检查不代表决策准确率或经营效果评测。详见[功能与效果边界](product-advisory-council/references/evaluation-status.md)。

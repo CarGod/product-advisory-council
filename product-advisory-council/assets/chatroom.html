@@ -322,7 +322,7 @@ const seats = new Map((DATA ? DATA.seats : []).map((s) => [s.slug, s]));
 const roster = new Map((DATA ? (DATA.roster || DATA.seats) : []).map((s) => [s.slug, s]));
 const byId = new Map();
 const cards = DATA ? DATA.cards : {};
-const ID_RE = /(?<![A-Za-z0-9_-])(?:SJ|YJ|ZXL|WX|LN|SA|DA|EM|AN|AK|ETM|KW|MK|BC)-[A-Z]?\d{2,3}(?![A-Za-z0-9_-])/;
+const ID_RE = /(?<![A-Za-z0-9_-])(?:SJ|YJ|ZXL|WX|LN|SA|DA|EM|AN|AK|ETM|KW|MK|BC|CM|WB|TC|BG)-[A-Z]?\d{2,3}(?![A-Za-z0-9_-])/;
 const escapeRegex = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const MENTION_RE = new RegExp("@(?:" + ["所有人", "大家", "全体", ...[...roster.values()].map((s) => escapeRegex(s.name) + "(?:视角)?")].join("|") + ")");
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

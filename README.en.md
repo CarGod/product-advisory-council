@@ -4,17 +4,23 @@
 
 # Product Advisory Council
 
-**One product question. Fourteen ways to think it through.**
+**One product question. Eighteen ways to think it through.**
 
 An AI skill for exploring product decisions through selected product and AI perspectives. Challenge assumptions, preserve meaningful disagreement, and turn advice into a testable next step.
 
-**One skill folder · 14 advisor modules · 148 decision method cards.** Use one perspective or convene a council, generate a chat-style discussion page, and export the conversation as images or PDF.
+**One skill folder · 18 advisor modules · 255 decision method cards.** Use one perspective or convene a council, generate a chat-style discussion page, and export the conversation as images or PDF.
 
 These advisors are AI analytical perspectives based on curated methods, not the actual people. They do not imply endorsement, equivalent access to a human advisor, or guaranteed business results.
 
-[Explore the interactive showcase](https://luffyliu.com/en/product-advisory-council/) · [Download v2.2.2](https://github.com/CarGod/product-advisory-council/releases/tag/v2.2.2) · [Skill entry point](product-advisory-council/SKILL.md)
+[Explore the interactive showcase](https://luffyliu.com/en/product-advisory-council/) · [Download v2.3.1](https://github.com/CarGod/product-advisory-council/releases/tag/v2.3.1) · [Skill entry point](product-advisory-council/SKILL.md)
 
 ## See how the perspectives work
+
+![Overview of 18 perspectives and 255 method cards](docs/images/council-overview-en.png)
+
+![From a decision brief to counterevidence and a validation plan](docs/images/decision-flow-en.png)
+
+The images above illustrate the current skill. The existing website screenshots below show the earlier 14-perspective showcase; the website and the 18-perspective skill package are updated separately.
 
 Choose an avatar to explore **four example questions and answers per advisor — 56 in total**. Follow a method link to a flip card: the front names the method; the back explains when to use it, what to ask, what to do, and where it stops applying.
 
@@ -51,7 +57,7 @@ Discussions begin with one shared brief and distinguish facts, assumptions, and 
 
 By default, even a short or single-perspective review delivers a written summary and a chat HTML page. Exceptions apply when you explicitly decline the page or the environment cannot generate it.
 
-## The 14 perspectives
+## The 18 perspectives
 
 These are the tool's curated focus areas, not complete descriptions of each person's views.
 
@@ -71,10 +77,14 @@ These are the tool's curated focus areas, not complete descriptions of each pers
 | Kevin Weil | User problems, prototypes, AI product workflows |
 | Mike Krieger | Feature focus, feedback, teams, agent products |
 | Boris Cherny | Tool validation, iteration, collaborative feedback |
+| Charlie Munger | Incentives, inversion, interacting errors, limits of competence |
+| Warren Buffett | Resource allocation, business quality, long-term costs and risk |
+| Tim Cook | Execution, supply chains, responsibility, value tradeoffs |
+| Bill Gates | Learning feedback, software delivery, platform dependencies, sustainable supply |
 
 ## Manual installation
 
-1. Download `product-advisors-public-v2.2.2.zip` from [Releases](https://github.com/CarGod/product-advisory-council/releases).
+1. Download `product-advisors-public-v2.3.1.zip` from [Releases](https://github.com/CarGod/product-advisory-council/releases).
 2. Extract and keep the **entire `product-advisory-council/` folder**. Do not copy only `SKILL.md`; the advisors do not need separate installation.
 3. Import the folder through your AI client's supported skill mechanism, or place it in the client's skill directory. Follow that client's documentation.
 
@@ -112,7 +122,7 @@ Provide the target user, current alternatives, actual data, resources, and deadl
 
 ## Choose participation and depth
 
-All 14 advisors do not need to participate. Specify required participants, exclusions, or an exclusive list. The host selects perspectives relevant to the question and records why participants join. Explicit exclusions are respected.
+All 18 advisors do not need to participate. Specify required participants, exclusions, or an exclusive list. The host selects perspectives relevant to the question and records why participants join. Explicit exclusions are respected.
 
 | Depth | Main emphasis | Planned cross-discussion rounds / maximum |
 | --- | --- | --- |
@@ -149,7 +159,7 @@ This is a decision-method tool, not trained model weights. Functional checks cov
 ```text
 product-advisory-council/
 ├── SKILL.md       # Entry point and routing
-├── advisors/     # 14 perspective modules
+├── advisors/     # 18 perspective modules
 ├── references/   # Method cards, protocols, brief and report templates
 ├── scripts/      # Search and local chat runtime
 ├── assets/       # Illustrated avatars, chat UI and export support
@@ -164,4 +174,4 @@ python3 scripts/search.py '用户价值 定价' --person yu-jun --limit 6
 python3 scripts/chatroom.py --help
 ```
 
-Current package: **v2.2.2**, the expanded product and AI council edition.
+Current package: **v2.3.1**, the expanded product and AI council edition.

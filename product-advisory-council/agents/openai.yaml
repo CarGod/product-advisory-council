@@ -1,4 +1,4 @@
 interface:
   display_name: "产品专家团"
-  short_description: "单人顾问或五视角评审，含讨论深度和图片导出"
+  short_description: "按需选择十八位方法视角，支持单人或团队评审、讨论深度与图片导出"
   default_prompt: "使用 $product-advisory-council 评审产品决策；按需选择单人或团队，团队先确定讨论深度，运用公开方法卡，区分事实与当前推演。"

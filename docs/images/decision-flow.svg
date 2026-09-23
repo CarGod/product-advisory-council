@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="570" viewBox="0 0 1440 570" role="img" aria-label="从问题到可验证的决策">
+<style>text{font-family:"PingFang SC","Helvetica Neue",Arial,sans-serif;fill:#282b25}.serif{font-family:"Songti SC",Georgia,serif}.muted{fill:#74786d}.accent{fill:#bd4b30}</style>
+<rect width="1440" height="570" fill="#f7f5ef"/>
+<path d="M64 46H1376" stroke="#dcdcd1"/>
+<text x="64" y="86" font-size="12" class="" letter-spacing="3">FROM PERSPECTIVE TO ACTION</text>
+<text x="64" y="151" font-size="43" class="serif" >让讨论落到一个可验证的行动。</text>
+<rect x="64" y="211" width="412" height="220" rx="14" fill="#fffdf8" stroke="#deded2"/>
+<text x="90" y="252" font-size="18" class="accent" >01</text>
+<text x="90" y="304" font-size="27" class="serif" >对齐问题</text>
+<text x="90" y="355" font-size="16" class="muted" >事实 · 假设 · 未知</text>
+<text x="90" y="387" font-size="16" class="muted" >用户 · 替代方案 · 约束</text>
+<path d="M483 320h20m-6-5 6 5-6 5" fill="none" stroke="#b44b32" stroke-width="2"/>
+<rect x="514" y="211" width="412" height="220" rx="14" fill="#fffdf8" stroke="#deded2"/>
+<text x="540" y="252" font-size="18" class="accent" >02</text>
+<text x="540" y="304" font-size="27" class="serif" >交叉检验</text>
+<text x="540" y="355" font-size="16" class="muted" >选择相关视角与方法</text>
+<text x="540" y="387" font-size="16" class="muted" >比较方案，保留分歧与反例</text>
+<path d="M933 320h20m-6-5 6 5-6 5" fill="none" stroke="#b44b32" stroke-width="2"/>
+<rect x="964" y="211" width="412" height="220" rx="14" fill="#fffdf8" stroke="#deded2"/>
+<text x="990" y="252" font-size="18" class="accent" >03</text>
+<text x="990" y="304" font-size="27" class="serif" >条件化决策</text>
+<text x="990" y="355" font-size="16" class="muted" >建议 · 最小实验</text>
+<text x="990" y="387" font-size="16" class="muted" >停止条件 · 改变判断的证据</text>
+<text x="64" y="481" font-size="18" class="accent" >文字总结 + 聊天网页 + 图片 / PDF 导出</text>
+<text x="64" y="529" font-size="15" class="muted" >功能流程示意。方法卡辅助推理，不是事实证明，也不保证结果。</text>
+</svg>

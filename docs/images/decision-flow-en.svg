@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="570" viewBox="0 0 1440 570" role="img" aria-label="From a question to a testable decision">
+<style>text{font-family:"PingFang SC","Helvetica Neue",Arial,sans-serif;fill:#282b25}.serif{font-family:"Songti SC",Georgia,serif}.muted{fill:#74786d}.accent{fill:#bd4b30}</style>
+<rect width="1440" height="570" fill="#f7f5ef"/>
+<path d="M64 46H1376" stroke="#dcdcd1"/>
+<text x="64" y="86" font-size="12" class="" letter-spacing="3">FROM PERSPECTIVE TO ACTION</text>
+<text x="64" y="151" font-size="43" class="serif" >A discussion that leads to a test.</text>
+<rect x="64" y="211" width="412" height="220" rx="14" fill="#fffdf8" stroke="#deded2"/>
+<text x="90" y="252" font-size="18" class="accent" >01</text>
+<text x="90" y="304" font-size="27" class="serif" >Define the brief</text>
+<text x="90" y="355" font-size="16" class="muted" >Facts · assumptions · unknowns</text>
+<text x="90" y="387" font-size="16" class="muted" >Users · alternatives · constraints</text>
+<path d="M483 320h20m-6-5 6 5-6 5" fill="none" stroke="#b44b32" stroke-width="2"/>
+<rect x="514" y="211" width="412" height="220" rx="14" fill="#fffdf8" stroke="#deded2"/>
+<text x="540" y="252" font-size="18" class="accent" >02</text>
+<text x="540" y="304" font-size="27" class="serif" >Challenge the choice</text>
+<text x="540" y="355" font-size="16" class="muted" >Choose relevant perspectives</text>
+<text x="540" y="387" font-size="16" class="muted" >Compare options and counterexamples</text>
+<path d="M933 320h20m-6-5 6 5-6 5" fill="none" stroke="#b44b32" stroke-width="2"/>
+<rect x="964" y="211" width="412" height="220" rx="14" fill="#fffdf8" stroke="#deded2"/>
+<text x="990" y="252" font-size="18" class="accent" >03</text>
+<text x="990" y="304" font-size="27" class="serif" >Make the next move</text>
+<text x="990" y="355" font-size="16" class="muted" >Recommendation · smallest test</text>
+<text x="990" y="387" font-size="16" class="muted" >Stop conditions · evidence to revisit</text>
+<text x="64" y="481" font-size="18" class="accent" >Text summary + chat-style page + image / PDF export</text>
+<text x="64" y="529" font-size="15" class="muted" >Workflow illustration. Method cards support reasoning; they do not prove facts or guarantee outcomes.</text>
+</svg>
