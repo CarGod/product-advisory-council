@@ -18,19 +18,19 @@
 
 ![从问题简报到反证和验证计划的讨论流程](docs/images/decision-flow.png)
 
-下面保留的是既有网站演示截图（14视角展示版）；它与本次18视角技能包分别更新。新图为技能功能示意，不是已上线网站截图。
+上面两张图概览技能与讨论流程；下面是已同步到 18 个视角的网站实拍截图。
 
 **[打开产品介绍与互动演示 →](https://luffyliu.com/product-advisory-council/)**
 
-点击专家头像，看看不同方法如何分析一个具体问题。每位顾问都有 **4 组示例问答**，共 **56 组**；点击回答下的「方法线索」，进入可翻转的方法卡片，查看适用条件、思考问题、行动建议与方法边界。
+点击专家头像，看看不同方法如何分析一个具体问题。每位顾问都有 **4 组示例问答**，共 **72 组**，对应 **72 张精选方法卡页面**；点击回答下的「方法线索」，进入可翻转的方法卡片，查看适用条件、思考问题、行动建议与方法边界。
 
-[![产品顾问团：14 位顾问头像墙与示例问答](docs/images/council-wall.png)](https://luffyliu.com/product-advisory-council/#meet)
+[![产品顾问团：18 位顾问头像墙与库克视角示例问答](docs/images/council-wall.png)](https://luffyliu.com/product-advisory-council/#meet)
 
 | 卡片正面：记住一个方法 | 翻到背面：知道怎么使用 |
 | --- | --- |
-| [![聚焦投入方法卡正面：头像、顾问名字与方法名称](docs/images/method-front.png)](https://luffyliu.com/product-advisory-council/cards/sj-p01/) | [![聚焦投入方法卡背面：适用条件、问题、行动与边界](docs/images/method-back.png)](https://luffyliu.com/product-advisory-council/cards/sj-p01/) |
+| [![预测偏差方法卡正面：库克视角、头像与方法名称](docs/images/method-front.png)](https://luffyliu.com/product-advisory-council/cards/tc-p01/) | [![聚焦投入方法卡背面：适用条件、问题、行动与边界](docs/images/method-back.png)](https://luffyliu.com/product-advisory-council/cards/tc-p01/) |
 
-网页中的问答是预先编写的 AI 分析示例，不是实时聊天或本人回答。网页支持简体中文、繁體中文、English、日本語、한국어和 Español，涵盖问答、方法卡与 Agent 安装指令；本仓库提供中英文介绍。
+网站精选展示 72 张卡，完整安装包包含 255 张卡。网页中的问答是预先编写的 AI 分析示例，不是实时聊天或本人回答。网页支持简体中文、繁體中文、English、日本語、한국어和 Español，涵盖问答、方法卡与 Agent 安装指令；本仓库提供中英文介绍。
 
 ## 复制给你的 Agent，让它帮你安装
 

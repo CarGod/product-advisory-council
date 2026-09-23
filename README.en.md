@@ -20,17 +20,17 @@ These advisors are AI analytical perspectives based on curated methods, not the 
 
 ![From a decision brief to counterevidence and a validation plan](docs/images/decision-flow-en.png)
 
-The images above illustrate the current skill. The existing website screenshots below show the earlier 14-perspective showcase; the website and the 18-perspective skill package are updated separately.
+The images above summarize the skill and its workflow. The live website screenshots below show the updated 18-perspective showcase.
 
-Choose an avatar to explore **four example questions and answers per advisor — 56 in total**. Follow a method link to a flip card: the front names the method; the back explains when to use it, what to ask, what to do, and where it stops applying.
+Choose an avatar to explore **four example questions and answers per advisor — 72 in total, linked to 72 selected method pages**. Follow a method link to a flip card: the front names the method; the back explains when to use it, what to ask, what to do, and where it stops applying.
 
-[![The advisor wall and a sample product discussion](docs/images/council-wall-en.png)](https://luffyliu.com/en/product-advisory-council/#meet)
+[![The 18-perspective advisor wall and a Tim Cook perspective example](docs/images/council-wall-en.png)](https://luffyliu.com/en/product-advisory-council/#meet)
 
 | Front: remember the method | Back: put it to work |
 | --- | --- |
-| [![Focus investment: advisor avatar and method title](docs/images/method-front-en.png)](https://luffyliu.com/en/product-advisory-council/cards/sj-p01/) | [![Method details: conditions, questions, actions and boundaries](docs/images/method-back-en.png)](https://luffyliu.com/en/product-advisory-council/cards/sj-p01/) |
+| [![Forecast factors and judgment errors: Tim Cook perspective and method title](docs/images/method-front-en.png)](https://luffyliu.com/en/product-advisory-council/cards/tc-p01/) | [![Method details: conditions, questions, actions and boundaries](docs/images/method-back-en.png)](https://luffyliu.com/en/product-advisory-council/cards/tc-p01/) |
 
-The website supports Simplified Chinese, Traditional Chinese, English, Japanese, Korean and Spanish, including Q&As, method cards and Agent installation prompts. The screenshots below show the English UI. The showcase uses prewritten AI analysis examples, not live chat or statements by the people represented. This repository provides Chinese and English introductions; the skill's method materials are primarily Chinese.
+The website supports Simplified Chinese, Traditional Chinese, English, Japanese, Korean and Spanish, including Q&As, method cards and Agent installation prompts. The screenshots above show the English UI. The website presents 72 selected methods; the complete skill includes 255 cards. The showcase uses prewritten AI analysis examples, not live chat or statements by the people represented. This repository provides Chinese and English introductions; the skill's method materials are primarily Chinese.
 
 ## Ask your Agent to install it
 

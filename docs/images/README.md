@@ -10,4 +10,9 @@ The matching SVG files are editable sources. Portraits are embedded in the overv
 - Workflow: 1440 × 570 px.
 - English versions use the `-en` suffix.
 
-The existing `council-wall`, `method-front`, and `method-back` images (including `-en`) are retained screenshots from the separate interactive website. They are not a claim that the website has already been updated to match this skill release.
+`council-wall`, `method-front`, and `method-back` (including `-en`) are actual screenshots of the updated live website, captured on 2026-09-24. The wall shows 18 perspectives; the example and flip card use TC-P01 (forecast factors and judgment errors). The website has 72 example Q&As and selected method pages per language; the complete skill has 255 method cards.
+
+The examples are prewritten AI analyses, not live discussions or statements by the people represented. Screenshot pages:
+
+- Chinese: https://luffyliu.com/product-advisory-council/#meet and https://luffyliu.com/product-advisory-council/cards/tc-p01/
+- English: https://luffyliu.com/en/product-advisory-council/#meet and https://luffyliu.com/en/product-advisory-council/cards/tc-p01/
